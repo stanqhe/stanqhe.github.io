@@ -1,0 +1,38 @@
+# Quarto build output
+_site/
+docs/
+.quarto/
+/.quarto/
+
+# Quarto cache / execution artifacts
+_freeze/
+_cache/
+*_cache/
+**/*.quarto_ipynb
+
+# Jupyter / notebook checkpoints
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Stan Q. He"
+  site-url: "https://stanqhe.github.io"
+  page-footer:
+    left: "© 2026 Stan Q. He. All rights reserved."
+    center: "[Terms of Use](/legal.html)"
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: styles.css
+    toc: false
+    smooth-scroll: true
+    respect-user-color-scheme: true

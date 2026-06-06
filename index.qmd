@@ -1,0 +1,30 @@
+---
+pagetitle: "Stan Q. He | Business Analytics"
+description: "Stan Q. He is an MSBA candidate at UC San Diego focused on business analytics, product experimentation, and decision intelligence."
+title-block-banner: false
+---
+
+::: {.landing}
+::: {.profile-column}
+![](https://raw.githubusercontent.com/stanqhe/assets/main/profile/avatar_coastal-youth.png){.profile-image fig-alt="Stan Q. He"}
+
+::: {.contact-links aria-label="Contact links"}
+[<i class="bi bi-github" aria-hidden="true"></i><span>GitHub</span>](https://github.com/stanqhe){.contact-link target="_blank" rel="noopener noreferrer"}
+[<i class="bi bi-linkedin" aria-hidden="true"></i><span>LinkedIn</span>](https://www.linkedin.com/in/stanqhe){.contact-link target="_blank" rel="noopener noreferrer"}
+[<i class="bi bi-envelope" aria-hidden="true"></i><span>Email</span>](mailto:stan.q.he@outlook.com){.contact-link}
+:::
+:::
+
+# Stan Q. He
+
+::: {.focus-line}
+MSBA candidate at UC San Diego
+:::
+
+I am a Master of Science in Business Analytics candidate at UC San Diego, building at the intersection of analytics, product, and business strategy. 
+
+Before graduate school, I built experience across PwC, Deloitte, and KPMG, where I developed a strong foundation in analytical thinking, business communication, and structured execution. 
+
+My current work focuses on applying analytics, experimentation, and decision-oriented modeling to turn data into clear business insight. I am especially interested in roles at the intersection of analytics, product, and strategy, where rigorous thinking, technical fluency, and thoughtful communication can create meaningful impact.
+
+:::

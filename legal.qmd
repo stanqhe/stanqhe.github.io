@@ -1,0 +1,89 @@
+---
+title: "Terms of Use"
+pagetitle: "Terms of Use | Stan Q. He"
+description: "Legal notice and content use policy for this website."
+---
+
+This website is maintained by Stan Q. He as a personal portfolio and public home for selected projects, writing, and creative work. By accessing this site, you acknowledge the terms below.
+
+_Last updated: June 2026_
+
+## Ownership of Content
+
+Unless otherwise stated, the original writing, photographs, portraits, graphics, project materials, visual design, and other content published on this site are owned by Stan Q. He.
+
+All original materials are protected by applicable copyright and intellectual property laws.
+
+© 2026 Stan Q. He. All rights reserved.
+
+## Permitted Use
+
+You may view, read, reference, and link to publicly available pages on this site for personal, educational, informational, or non-commercial purposes, provided that proper attribution is given and the original context is not misrepresented.
+
+## Prohibited Use
+
+Unless prior written permission is granted, the following uses are not permitted:
+
+- Commercial use, exploitation, redistribution, or resale
+- Copying, republishing, or reproducing site content in full or substantial part
+- Modification, remixing, adaptation, or creation of derivative works
+- Use in advertising, promotional, endorsement, or misleading contexts
+- Removal, alteration, or obscuring of attribution, watermarking, or ownership notices
+- Automated scraping, bulk collection, dataset creation, or redistribution of site materials
+
+## Academic and Project Materials
+
+Some projects, notes, analyses, and presentations on this site may reference public datasets, academic materials, software libraries, third-party tools, trademarks, or external sources. These materials remain the property of their respective owners and are subject to their own licenses, terms, and attribution requirements.
+
+The inclusion of third-party materials does not imply endorsement, ownership, partnership, or affiliation unless explicitly stated.
+
+## Fonts, Libraries, and Site Assets
+
+This site may use open-source fonts, software libraries, icons, templates, or other third-party assets. These assets remain subject to their respective licenses and attribution requirements.
+
+The use of a font, library, tool, or asset does not imply endorsement by its creator, maintainer, or rights holder.
+
+## Images and Personal Media
+
+Photographs, portraits, personal images, and visual assets on this site may not be downloaded, reused, edited, reposted, or used to create derivative works without prior written permission.
+
+This website is intended as a public record of work and identity, not a media repository for third-party reuse.
+
+## AI, Machine Learning, and Synthetic Media Use
+
+Unauthorized use of any content from this site for AI, machine learning, biometric, or synthetic media purposes is prohibited.
+
+This includes, but is not limited to:
+
+- Training, fine-tuning, evaluating, or benchmarking AI models
+- Building datasets, embeddings, face templates, or biometric profiles
+- Synthetic media generation
+- Facial animation, face swapping, or identity transfer
+- Voice pairing or multimodal impersonation
+- Creation of derivative, simulated, or lookalike representations
+
+These restrictions apply regardless of whether the use is commercial, non-commercial, research, educational, or personal.
+
+Nothing in this section limits use by the rights holder or with prior written permission.
+
+## External Links
+
+This site may include links to third-party websites, platforms, repositories, publications, or resources. These links are provided for reference and convenience only.
+
+Stan Q. He is not responsible for the content, availability, accuracy, security, or privacy practices of external websites.
+
+## No Professional Advice
+
+The content on this site is provided for personal, academic, and informational purposes only. It should not be interpreted as legal, financial, investment, career, technical, or professional advice.
+
+Any views expressed on this site are personal unless otherwise stated.
+
+## Changes to This Site
+
+Content on this site may be updated, revised, removed, or reorganized at any time without notice. These terms may also be updated from time to time.
+
+## Contact
+
+For permission requests, licensing inquiries, or questions about the use of content from this site, please contact Stan Q. He through the contact information provided on the homepage.
+
+[Return to the homepage](index.qmd){.legal-back-link}

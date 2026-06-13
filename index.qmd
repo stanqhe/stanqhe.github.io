@@ -2,11 +2,12 @@
 pagetitle: "Stan Q. He | Business Analytics"
 description: "Stan Q. He is an MSBA candidate at UC San Diego focused on business analytics, product experimentation, and decision intelligence."
 title-block-banner: false
+toc: false
 ---
 
 ::: {.landing}
 ::: {.profile-column}
-![](https://raw.githubusercontent.com/stanqhe/assets/main/profile/avatar_coastal-youth.png){.profile-image fig-alt="Stan Q. He"}
+![](https://raw.githubusercontent.com/stanqhe/assets/main/profile/avatar_coastal-light.jpeg){.profile-image fig-alt="Stan Q. He"}
 
 ::: {.contact-links aria-label="Contact links"}
 [<i class="bi bi-github" aria-hidden="true"></i><span>GitHub</span>](https://github.com/stanqhe){.contact-link target="_blank" rel="noopener noreferrer"}

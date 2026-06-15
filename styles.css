@@ -283,7 +283,17 @@ body.has-enhanced-toc #TOC a {
     margin: 0;
     padding: 0;
     overflow: visible;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
     transform: translateY(-50%);
+  }
+
+  body.has-enhanced-toc #quarto-margin-sidebar::after {
+    position: absolute;
+    inset: 0 calc(-1 * var(--site-page-gutter)) 0 100%;
+    content: "";
+    pointer-events: none;
   }
 
   body.has-enhanced-toc #TOC {
@@ -341,7 +351,7 @@ body.has-enhanced-toc #TOC a {
 
   body.has-enhanced-toc #TOC ul ul {
     margin-top: 0.34rem;
-    padding-left: 0.55rem;
+    padding-left: 0;
   }
 
   body.has-enhanced-toc #TOC li {
@@ -380,7 +390,7 @@ body.has-enhanced-toc #TOC a {
     position: absolute;
     top: 50%;
     right: calc(100% - 2.1rem);
-    width: 0.85rem;
+    width: 14px;
     height: 2px;
     border-radius: 999px;
     background: var(--site-muted);
@@ -401,6 +411,13 @@ body.has-enhanced-toc #TOC a {
     text-overflow: clip;
     white-space: normal;
     overflow-wrap: anywhere;
+  }
+
+  body.has-enhanced-toc #quarto-margin-sidebar:hover #TOC ul ul a,
+  body.has-enhanced-toc #quarto-margin-sidebar:focus-within #TOC ul ul a,
+  body.has-enhanced-toc #quarto-margin-sidebar.toc-expanded #TOC ul ul a {
+    padding-left: 1.2rem;
+    font-size: 0.74rem;
   }
 
   body.has-enhanced-toc #quarto-margin-sidebar:hover #TOC a::before,
@@ -425,9 +442,18 @@ body.has-enhanced-toc #TOC a {
 
   body.has-enhanced-toc #TOC a.is-current::before,
   body.has-enhanced-toc #TOC a[aria-current]::before {
-    width: 1.1rem;
+    width: 18px;
     background: var(--toc-accent-blue);
     opacity: 1;
+  }
+
+  body.has-enhanced-toc #TOC ul ul a::before {
+    width: 8px;
+  }
+
+  body.has-enhanced-toc #TOC ul ul a.is-current::before,
+  body.has-enhanced-toc #TOC ul ul a[aria-current]::before {
+    width: 12px;
   }
 
   body.has-enhanced-toc #quarto-margin-sidebar:hover #TOC a:hover,
@@ -438,17 +464,27 @@ body.has-enhanced-toc #TOC a {
   }
 }
 
+@media (min-width: 88rem) and (hover: hover) and (pointer: fine) {
+  body.has-enhanced-toc #quarto-margin-sidebar::after {
+    pointer-events: auto;
+  }
+}
+
 @media (max-width: 87.999rem) {
   body.has-enhanced-toc #quarto-margin-sidebar {
     display: block !important;
     position: fixed;
     top: 50% !important;
-    right: max(0.15rem, env(safe-area-inset-right));
+    right: max(1rem, calc(env(safe-area-inset-right) + 0.5rem));
     z-index: 20;
     width: min(18rem, calc(100vw - 2rem));
     margin: 0;
     padding: 0;
     overflow: visible;
+    pointer-events: none;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
     transform: translateY(-50%);
   }
 
@@ -462,6 +498,7 @@ body.has-enhanced-toc #TOC a {
     border: 1px solid transparent;
     border-radius: 0.9rem;
     background: transparent;
+    pointer-events: auto;
     scrollbar-width: none;
     transform: translateX(calc(100% - 1.25rem));
     transition:
@@ -544,7 +581,7 @@ body.has-enhanced-toc #TOC a {
     position: absolute;
     top: 50%;
     right: calc(100% - 1.05rem);
-    width: 0.75rem;
+    width: 14px;
     height: 2px;
     border-radius: 999px;
     background: var(--site-muted);
@@ -555,9 +592,18 @@ body.has-enhanced-toc #TOC a {
 
   body.has-enhanced-toc #TOC a.is-current::before,
   body.has-enhanced-toc #TOC a[aria-current]::before {
-    width: 1rem;
+    width: 18px;
     background: var(--toc-accent-blue);
     opacity: 1;
+  }
+
+  body.has-enhanced-toc #TOC ul ul a::before {
+    width: 8px;
+  }
+
+  body.has-enhanced-toc #TOC ul ul a.is-current::before,
+  body.has-enhanced-toc #TOC ul ul a[aria-current]::before {
+    width: 12px;
   }
 
   body.has-enhanced-toc #quarto-margin-sidebar.toc-expanded #TOC a {
@@ -567,6 +613,16 @@ body.has-enhanced-toc #TOC a {
     color: var(--site-muted) !important;
     white-space: normal;
     overflow-wrap: anywhere;
+  }
+
+  body.has-enhanced-toc
+    #quarto-margin-sidebar.toc-expanded
+    #TOC
+    ul
+    ul
+    a {
+    padding-left: 1.2rem;
+    font-size: 0.78rem;
   }
 
   body.has-enhanced-toc
@@ -592,14 +648,6 @@ body.has-enhanced-toc #TOC a {
   body.has-enhanced-toc
     #quarto-margin-sidebar.toc-expanded
     #TOC
-    a.is-pointed {
-    background: rgba(127, 127, 127, 0.2);
-    color: var(--site-ink) !important;
-  }
-
-  body.has-enhanced-toc
-    #quarto-margin-sidebar.toc-expanded
-    #TOC
     a:hover,
   body.has-enhanced-toc
     #quarto-margin-sidebar.toc-expanded
@@ -607,6 +655,14 @@ body.has-enhanced-toc #TOC a {
     a:focus-visible {
     background: rgba(127, 127, 127, 0.16);
     outline: none;
+  }
+}
+
+@media (max-width: 30rem) and (hover: none) and (pointer: coarse) {
+  body.has-enhanced-toc .page-columns main.content {
+    width: auto;
+    margin-left: var(--site-page-gutter);
+    margin-right: calc(var(--site-page-gutter) + 1.25rem);
   }
 }
 
@@ -621,16 +677,27 @@ body.has-enhanced-toc #TOC a {
 
   body.has-enhanced-toc #TOC a::before {
     right: calc(100% - 0.72rem);
-    width: 0.32rem;
-    height: 0.32rem;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     transform: translateY(-50%);
   }
 
   body.has-enhanced-toc #TOC a.is-current::before,
   body.has-enhanced-toc #TOC a[aria-current]::before {
-    width: 0.44rem;
-    height: 0.44rem;
+    width: 8px;
+    height: 8px;
+  }
+
+  body.has-enhanced-toc #TOC ul ul a::before {
+    width: 4px;
+    height: 4px;
+  }
+
+  body.has-enhanced-toc #TOC ul ul a.is-current::before,
+  body.has-enhanced-toc #TOC ul ul a[aria-current]::before {
+    width: 6px;
+    height: 6px;
   }
 
   body.has-enhanced-toc
@@ -639,6 +706,59 @@ body.has-enhanced-toc #TOC a {
     a::before {
     right: 0.45rem;
     transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 87.999rem) and (hover: hover) and (pointer: fine) {
+  body.has-enhanced-toc #quarto-margin-sidebar::after {
+    position: absolute;
+    inset:
+      0
+      calc(-1 * max(1rem, calc(env(safe-area-inset-right) + 0.5rem)))
+      0
+      100%;
+    content: "";
+    pointer-events: auto;
+  }
+
+  body.has-enhanced-toc #quarto-margin-sidebar:hover #TOC,
+  body.has-enhanced-toc #quarto-margin-sidebar:focus-within #TOC {
+    max-height: min(76vh, 38rem);
+    padding: 0.8rem;
+    border-color: var(--site-border);
+    background: var(--site-panel);
+    box-shadow: 0 0.75rem 2rem var(--site-shadow);
+    backdrop-filter: blur(20px) saturate(145%);
+    -webkit-backdrop-filter: blur(20px) saturate(145%);
+    transform: translateX(0);
+  }
+
+  body.has-enhanced-toc #quarto-margin-sidebar:hover #TOC a,
+  body.has-enhanced-toc #quarto-margin-sidebar:focus-within #TOC a {
+    min-height: 1.5rem;
+    padding: 0.22rem 2.25rem 0.22rem 0.45rem;
+    overflow: visible;
+    color: var(--site-muted) !important;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  body.has-enhanced-toc #quarto-margin-sidebar:hover #TOC ul ul a,
+  body.has-enhanced-toc #quarto-margin-sidebar:focus-within #TOC ul ul a {
+    padding-left: 1.2rem;
+    font-size: 0.78rem;
+  }
+
+  body.has-enhanced-toc #quarto-margin-sidebar:hover #TOC a::before,
+  body.has-enhanced-toc #quarto-margin-sidebar:focus-within #TOC a::before {
+    right: 0.45rem;
+  }
+
+  body.has-enhanced-toc #quarto-margin-sidebar:hover #TOC a.is-current,
+  body.has-enhanced-toc #quarto-margin-sidebar:hover #TOC a[aria-current],
+  body.has-enhanced-toc #quarto-margin-sidebar:focus-within #TOC a.is-current,
+  body.has-enhanced-toc #quarto-margin-sidebar:focus-within #TOC a[aria-current] {
+    color: var(--toc-accent-blue) !important;
   }
 }
 

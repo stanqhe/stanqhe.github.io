@@ -28,28 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentItem = null;
   let clickLockUntil = 0;
   let frameRequested = false;
-  let touchPointerId = null;
-  let pointedItem = null;
-  let suppressClick = false;
+  let activationPointerType = null;
   let flashTimer = null;
-  const compactToc = window.matchMedia("(max-width: 87.999rem)");
   const readingLineRatio = 0.3;
 
   const setExpanded = (expanded) => {
     sidebar.classList.toggle("toc-expanded", expanded);
     sidebar.setAttribute("aria-expanded", String(expanded));
-  };
-
-  const setPointedItem = (item) => {
-    items.forEach(({ link }) => {
-      link.classList.toggle("is-pointed", item?.link === link);
-    });
-    pointedItem = item;
-  };
-
-  const itemAtPoint = (x, y) => {
-    const link = document.elementFromPoint(x, y)?.closest("#TOC a.nav-link");
-    return items.find((item) => item.link === link) || null;
   };
 
   const navigateToItem = (item) => {
@@ -73,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1100);
 
     setExpanded(false);
-    setPointedItem(null);
   };
 
   const setCurrentItem = (item) => {
@@ -136,14 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   items.forEach((item) => {
     item.link.addEventListener("click", (event) => {
-      if (suppressClick) {
-        event.preventDefault();
-        suppressClick = false;
-        return;
-      }
+      const requiresReveal =
+        activationPointerType !== null && activationPointerType !== "mouse";
+      activationPointerType = null;
 
       if (
-        compactToc.matches &&
+        requiresReveal &&
         !sidebar.classList.contains("toc-expanded")
       ) {
         event.preventDefault();
@@ -157,63 +139,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   sidebar.addEventListener("pointerdown", (event) => {
-    if (!compactToc.matches || event.pointerType === "mouse") {
-      return;
-    }
-
-    event.preventDefault();
-    touchPointerId = event.pointerId;
-    suppressClick = true;
-    sidebar.setPointerCapture(event.pointerId);
-    setExpanded(true);
-    setPointedItem(itemAtPoint(event.clientX, event.clientY) || currentItem);
-  });
-
-  sidebar.addEventListener("pointermove", (event) => {
-    if (event.pointerId !== touchPointerId) {
-      return;
-    }
-
-    setPointedItem(itemAtPoint(event.clientX, event.clientY) || pointedItem);
-  });
-
-  const finishTouchSelection = (event) => {
-    if (event.pointerId !== touchPointerId) {
-      return;
-    }
-
-    const selection = itemAtPoint(event.clientX, event.clientY) || pointedItem;
-    touchPointerId = null;
-
-    if (selection) {
-      navigateToItem(selection);
-    } else {
-      setExpanded(false);
-      setPointedItem(null);
-    }
-  };
-
-  sidebar.addEventListener("pointerup", finishTouchSelection);
-  sidebar.addEventListener("pointercancel", (event) => {
-    if (event.pointerId === touchPointerId) {
-      touchPointerId = null;
-      setExpanded(false);
-      setPointedItem(null);
-    }
+    activationPointerType = event.pointerType || "mouse";
   });
 
   document.addEventListener("pointerdown", (event) => {
     if (!sidebar.contains(event.target)) {
       setExpanded(false);
-      setPointedItem(null);
     }
   });
 
   document.addEventListener("keydown", (event) => {
+    activationPointerType = null;
+
     if (event.key === "Escape") {
       setExpanded(false);
       sidebar.blur();
-      setPointedItem(null);
     }
   });
 
@@ -221,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "scroll",
     () => {
       requestCurrentSectionUpdate();
+      setExpanded(false);
     },
     { passive: true },
   );

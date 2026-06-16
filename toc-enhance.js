@@ -28,8 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentItem = null;
   let clickLockUntil = 0;
   let frameRequested = false;
-  let activationPointerType = null;
+  let lastPointerType = null;
   let flashTimer = null;
+  const fineHover = window.matchMedia("(hover: hover) and (pointer: fine)");
   const readingLineRatio = 0.3;
 
   const setExpanded = (expanded) => {
@@ -37,7 +38,32 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebar.setAttribute("aria-expanded", String(expanded));
   };
 
-  const navigateToItem = (item) => {
+  const setHovered = (hovered) => {
+    sidebar.classList.toggle("toc-hovered", hovered && fineHover.matches);
+  };
+
+  const updateHoverState = (event) => {
+    if (event.pointerType && event.pointerType !== "mouse") {
+      setHovered(false);
+      return;
+    }
+
+    const { left, top, bottom } = sidebar.getBoundingClientRect();
+    const isInHoverZone =
+      event.clientX >= left &&
+      event.clientX <= window.innerWidth &&
+      event.clientY >= top &&
+      event.clientY <= bottom;
+
+    setHovered(isInHoverZone);
+  };
+
+  const clearOpenState = () => {
+    setExpanded(false);
+    setHovered(false);
+  };
+
+  const navigateToItem = (item, { collapse = true } = {}) => {
     clickLockUntil = performance.now() + 1800;
     setCurrentItem(item);
     history.pushState(null, "", item.link.hash);
@@ -57,7 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
       item.target.classList.remove("heading-flash");
     }, 1100);
 
-    setExpanded(false);
+    if (collapse) {
+      clearOpenState();
+    }
   };
 
   const setCurrentItem = (item) => {
@@ -120,12 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   items.forEach((item) => {
     item.link.addEventListener("click", (event) => {
-      const requiresReveal =
-        activationPointerType !== null && activationPointerType !== "mouse";
-      activationPointerType = null;
+      const pointerType = lastPointerType || "keyboard";
+      const isDirectNavigation = pointerType === "mouse";
+      lastPointerType = null;
 
       if (
-        requiresReveal &&
+        !isDirectNavigation &&
         !sidebar.classList.contains("toc-expanded")
       ) {
         event.preventDefault();
@@ -134,25 +162,32 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       event.preventDefault();
-      navigateToItem(item);
+      navigateToItem(item, { collapse: !isDirectNavigation });
+
+      if (isDirectNavigation) {
+        item.link.blur();
+      }
     });
   });
 
   sidebar.addEventListener("pointerdown", (event) => {
-    activationPointerType = event.pointerType || "mouse";
+    lastPointerType = event.pointerType || "mouse";
   });
+
+  document.addEventListener("pointermove", updateHoverState, { passive: true });
+  document.addEventListener("pointerleave", () => setHovered(false));
 
   document.addEventListener("pointerdown", (event) => {
     if (!sidebar.contains(event.target)) {
-      setExpanded(false);
+      clearOpenState();
     }
   });
 
   document.addEventListener("keydown", (event) => {
-    activationPointerType = null;
+    lastPointerType = null;
 
     if (event.key === "Escape") {
-      setExpanded(false);
+      clearOpenState();
       sidebar.blur();
     }
   });
@@ -167,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   window.addEventListener("resize", () => {
     requestCurrentSectionUpdate();
-    setExpanded(false);
+    clearOpenState();
   });
 
   const hashItem = items.find(

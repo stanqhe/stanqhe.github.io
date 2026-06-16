@@ -8,18 +8,18 @@ toc: false
 ::: {.landing}
 ::: {.profile-column}
 ![](https://raw.githubusercontent.com/stanqhe/assets/main/profile/avatar_coastal-light.jpeg){.profile-image fig-alt="Stan Q. He"}
+:::
 
 ::: {.contact-links aria-label="Contact links"}
 [<i class="bi bi-github" aria-hidden="true"></i><span>GitHub</span>](https://github.com/stanqhe){.contact-link target="_blank" rel="noopener noreferrer"}
 [<i class="bi bi-linkedin" aria-hidden="true"></i><span>LinkedIn</span>](https://www.linkedin.com/in/stanqhe){.contact-link target="_blank" rel="noopener noreferrer"}
 [<i class="bi bi-envelope" aria-hidden="true"></i><span>Email</span>](mailto:stan.q.he@outlook.com){.contact-link}
 :::
-:::
 
 # Stan Q. He
 
 ::: {.focus-line}
-MSBA candidate at UC San Diego
+MSBA Candidate at UC San Diego · Exploring AI, analytics & product strategy for better digital life
 :::
 
 I am a Master of Science in Business Analytics candidate at UC San Diego, building at the intersection of analytics, product, and business strategy. 

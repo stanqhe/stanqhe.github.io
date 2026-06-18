@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Stan Q. He"
+  favicon: assets/images/strarts_mark.svg
   site-url: "https://stanqhe.github.io"
   google-analytics: "G-WX3RQDGV80"
   page-footer:

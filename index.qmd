@@ -19,13 +19,17 @@ toc: false
 # Stan Q. He
 
 ::: {.focus-line}
-MSBA Candidate at UC San Diego · Exploring AI, analytics & product strategy for better digital life
+MSBA Candidate at UC San Diego · Exploring business analytics, product strategy, and AI-enabled transformation for better digital life
 :::
 
-I am a Master of Science in Business Analytics candidate at UC San Diego, building at the intersection of analytics, product, and business strategy. 
+I work at the intersection of business analytics, product strategy, and AI-enabled transformation.
 
-Before graduate school, I built experience across PwC, Deloitte, and KPMG, where I developed a strong foundation in analytical thinking, business communication, and structured execution. 
+As a Master of Science in Business Analytics candidate at UC San Diego, I focus on turning business ambiguity into clearer decisions through analytics, experimentation, and decision-oriented modeling. My interests sit where data, product thinking, and AI-assisted workflows help organizations connect strategy, systems, and execution.
 
-My current work focuses on applying analytics, experimentation, and decision-oriented modeling to turn data into clear business insight. I am especially interested in roles at the intersection of analytics, product, and strategy, where rigorous thinking, technical fluency, and thoughtful communication can create meaningful impact.
+Before graduate school, I gained experience in Big Four advisory environments, building a foundation in structured problem-solving, analytical decision-making, and business communication.
+
+My professional direction centers on analytics, product strategy, and transformation, where rigorous thinking, technical fluency, and thoughtful communication can create meaningful business impact.
+
+This site serves as a personal display layer for my projects, ideas, and reflections — a place to document how I learn, build, and think across analytics, technology, and life.
 
 :::

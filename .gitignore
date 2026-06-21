@@ -30,6 +30,9 @@ venv/
 .vscode/
 !.vscode/extensions.json
 
+# Dev container
+.devcontainer/
+
 # Logs
 *.log
 

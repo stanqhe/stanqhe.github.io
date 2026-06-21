@@ -84,6 +84,4 @@ Content on this site may be updated, revised, removed, or reorganized at any tim
 
 ## Contact
 
-For permission requests, licensing inquiries, or questions about the use of content from this site, please contact Stan Q. He through the contact information provided on the homepage.
-
-[Return to the homepage](index.qmd){.legal-back-link}
+For permission requests, licensing inquiries, or questions about the use of content from this site, please contact Stan Q. He through the contact information provided on the [homepage](index.qmd).

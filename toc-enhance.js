@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+const initializeEnhancedToc = () => {
   const toc = document.querySelector("#TOC");
   const sidebar = document.querySelector("#quarto-margin-sidebar");
 
@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let frameRequested = false;
   let lastPointerType = null;
   let flashTimer = null;
+  let userInteractedWithToc = false;
   const fineHover = window.matchMedia("(hover: hover) and (pointer: fine)");
   const readingLineRatio = 0.3;
 
@@ -61,6 +62,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearOpenState = () => {
     setExpanded(false);
     setHovered(false);
+  };
+
+  const revealTocOnce = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    try {
+      if (window.sessionStorage.getItem("toc-peek-seen")) {
+        return;
+      }
+
+      window.sessionStorage.setItem("toc-peek-seen", "true");
+    } catch {
+      return;
+    }
+
+    setExpanded(true);
+    window.setTimeout(() => {
+      const isEngaged =
+        userInteractedWithToc ||
+        sidebar.classList.contains("toc-hovered") ||
+        sidebar.matches(":focus-within");
+
+      if (!isEngaged) {
+        setExpanded(false);
+      }
+    }, 1800);
   };
 
   const navigateToItem = (item, { collapse = true } = {}) => {
@@ -171,7 +200,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   sidebar.addEventListener("pointerdown", (event) => {
+    userInteractedWithToc = true;
     lastPointerType = event.pointerType || "mouse";
+  });
+  sidebar.addEventListener("focusin", () => {
+    userInteractedWithToc = true;
   });
 
   document.addEventListener("pointermove", updateHoverState, { passive: true });
@@ -211,4 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setCurrentItem(hashItem || items[0]);
   requestCurrentSectionUpdate();
-});
+  revealTocOnce();
+};
+
+initializeEnhancedToc();

@@ -6,30 +6,41 @@ toc: false
 ---
 
 ::: {.landing}
+<div class="identity-name" role="heading" aria-level="1">Stan Q. He</div>
+
+<!-- Keep the profile stack independent from the introduction grid. -->
+:::: {.profile-details}
 ::: {.profile-column}
 ![](https://raw.githubusercontent.com/stanqhe/assets/main/profile/avatar_coastal-light.jpeg){.profile-image fig-alt="Stan Q. He"}
 :::
 
-::: {.contact-links aria-label="Contact links"}
-[<i class="bi bi-github" aria-hidden="true"></i><span>GitHub</span>](https://github.com/stanqhe){.contact-link target="_blank" rel="noopener noreferrer"}
-[<i class="bi bi-linkedin" aria-hidden="true"></i><span>LinkedIn</span>](https://www.linkedin.com/in/stanqhe){.contact-link target="_blank" rel="noopener noreferrer"}
-[<i class="bi bi-envelope" aria-hidden="true"></i><span>Email</span>](mailto:stan.q.he@outlook.com){.contact-link}
-:::
-
-# Stan Q. He
-
+::: {.identity-block}
 ::: {.focus-line}
-MSBA Candidate at UC San Diego · Exploring business analytics, product strategy, and AI-enabled transformation for better digital life
+[MSBA Candidate at UC San Diego]{.bio-lead}
+
+Exploring business analytics, product strategy, and AI-enabled <span class="bio-tail">transformation for better digital life</span>
+:::
 :::
 
+::: {.contact-links aria-label="Contact links"}
+[<i class="bi bi-github" aria-hidden="true"></i><span class="visually-hidden">GitHub</span>](https://github.com/stanqhe){.contact-link target="_blank" rel="noopener noreferrer"}
+[<i class="bi bi-linkedin" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span>](https://www.linkedin.com/in/stanqhe){.contact-link target="_blank" rel="noopener noreferrer"}
+[<i class="bi bi-envelope" aria-hidden="true"></i><span class="visually-hidden">Email</span>](mailto:stan.q.he@outlook.com){.contact-link}
+[<i class="bi bi-twitter-x" aria-hidden="true"></i><span class="visually-hidden">X</span>](https://x.com/stanqhe){.contact-link target="_blank" rel="noopener noreferrer"}
+[<i class="bi bi-instagram" aria-hidden="true"></i><span class="visually-hidden">Instagram</span>](https://www.instagram.com/stanqhe/){.contact-link target="_blank" rel="noopener noreferrer"}
+:::
+::::
+
+::: {.intro-column}
 I work at the intersection of business analytics, product strategy, and AI-enabled transformation.
 
 As a Master of Science in Business Analytics candidate at UC San Diego, I focus on turning business ambiguity into clearer decisions through analytics, experimentation, and decision-oriented modeling. My interests sit where data, product thinking, and AI-assisted workflows help organizations connect strategy, systems, and execution.
 
 Before graduate school, I gained experience in Big Four advisory environments, building a foundation in structured problem-solving, analytical decision-making, and business communication.
 
-My professional direction centers on analytics, product strategy, and transformation, where rigorous thinking, technical fluency, and thoughtful communication can create meaningful business impact.
+My professional direction centers on analytics, product strategy, and transformation, where rigorous thinking, technical fluency, and thoughtful communication can create practical business impact.
 
-This site serves as a personal display layer for my projects, ideas, and reflections — a place to document how I learn, build, and think across analytics, technology, and life.
+This site brings together my projects and writing, along with moments from life beyond work and study. From daylight vibe to midnight swag, it records a meaningful life across endless time.
 
+:::
 :::

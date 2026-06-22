@@ -1,0 +1,37 @@
+<script>
+  (() => {
+    const preserveScrollPosition = () => {
+      const scrollX = window.scrollX;
+      const scrollY = window.scrollY;
+      const scrollBehavior = document.documentElement.style.scrollBehavior;
+
+      // Quarto scrolls Safari to 1px and then 0px to repaint its scrollbar.
+      // Disable smooth scrolling until that delayed workaround has completed.
+      document.documentElement.style.scrollBehavior = "auto";
+
+      window.setTimeout(() => {
+        window.scrollTo({
+          left: scrollX,
+          top: scrollY,
+          behavior: "instant",
+        });
+        document.documentElement.style.scrollBehavior = scrollBehavior;
+      }, 60);
+    };
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", preserveScrollPosition, { capture: true });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const toggleColorScheme = window.quartoToggleColorScheme;
+
+      if (typeof toggleColorScheme === "function") {
+        window.quartoToggleColorScheme = (...args) => {
+          preserveScrollPosition();
+          toggleColorScheme(...args);
+        };
+      }
+    });
+  })();
+</script>

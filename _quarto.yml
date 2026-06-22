@@ -22,6 +22,10 @@ format:
     toc-depth: 3
     smooth-scroll: true
     anchor-sections: false
+    include-in-header:
+      - theme-toggle-scroll.html
+    include-before-body:
+      - site-navbar.html
     include-after-body:
       - toc-enhance.html
     respect-user-color-scheme: true

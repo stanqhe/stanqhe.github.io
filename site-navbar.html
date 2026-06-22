@@ -1,3 +1,112 @@
 <header class="site-navbar" aria-label="Site navigation">
   <a class="site-navbar-brand" href="/">Stan Q. He</a>
 </header>
+
+<script>
+  (() => {
+    let identity = null;
+    let avatar = null;
+    let collapseDistance = 0;
+    let initialFontSize = 0;
+    let compactFontSize = 0;
+    let measurementFrameRequested = false;
+    let renderFrameRequested = false;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    const renderIdentityCollapse = () => {
+      renderFrameRequested = false;
+
+      if (!identity || !collapseDistance || reducedMotion.matches) {
+        return;
+      }
+
+      const progress = Math.min(
+        1,
+        Math.max(0, window.scrollY / collapseDistance),
+      );
+      const fontSize =
+        initialFontSize - (initialFontSize - compactFontSize) * progress;
+      const letterSpacing = -0.055 + 0.03 * progress;
+
+      identity.style.fontSize = `${fontSize}px`;
+      identity.style.letterSpacing = `${letterSpacing}em`;
+    };
+
+    const requestRender = () => {
+      if (!renderFrameRequested) {
+        renderFrameRequested = true;
+        window.requestAnimationFrame(renderIdentityCollapse);
+      }
+    };
+
+    const measureIdentityCollapse = () => {
+      measurementFrameRequested = false;
+
+      if (!identity || !avatar) {
+        return;
+      }
+
+      identity.style.removeProperty("font-size");
+      identity.style.removeProperty("letter-spacing");
+      initialFontSize = Number.parseFloat(getComputedStyle(identity).fontSize);
+      compactFontSize =
+        Number.parseFloat(getComputedStyle(document.documentElement).fontSize) *
+        1.4;
+      const avatarTop = avatar.getBoundingClientRect().top + window.scrollY;
+      collapseDistance = Math.max(1, avatarTop - identity.offsetHeight);
+
+      document.documentElement.style.setProperty(
+        "--identity-collapse-distance",
+        `${collapseDistance}px`,
+      );
+      renderIdentityCollapse();
+    };
+
+    const requestMeasurement = () => {
+      if (!measurementFrameRequested) {
+        measurementFrameRequested = true;
+        window.requestAnimationFrame(measureIdentityCollapse);
+      }
+    };
+
+    const initializeIdentityCollapse = () => {
+      identity = document.querySelector(".identity-name");
+      avatar = document.querySelector(".profile-image");
+
+      if (!identity || !avatar) {
+        return;
+      }
+
+      requestMeasurement();
+      window.addEventListener("resize", requestMeasurement);
+      window.addEventListener("pageshow", requestMeasurement);
+      window.addEventListener("scroll", requestRender, { passive: true });
+      reducedMotion.addEventListener("change", () => {
+        identity.style.removeProperty("font-size");
+        identity.style.removeProperty("letter-spacing");
+
+        if (!reducedMotion.matches) {
+          requestMeasurement();
+        }
+      });
+
+      if (avatar && !avatar.complete) {
+        avatar.addEventListener("load", requestMeasurement, { once: true });
+      }
+
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(requestMeasurement);
+      }
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializeIdentityCollapse, {
+        once: true,
+      });
+    } else {
+      initializeIdentityCollapse();
+    }
+  })();
+</script>

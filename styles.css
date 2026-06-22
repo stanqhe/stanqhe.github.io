@@ -47,6 +47,7 @@
   --site-copy-size: clamp(1rem, 0.98rem + 0.1vw, 1.06rem);
   --site-copy-leading: 1.65;
   --site-paragraph-gap: 1.1rem;
+  --identity-collapse-distance: 8rem;
 
   --color-blue: #a8d8f0;
   --color-purple: #d9d2e9;
@@ -75,6 +76,7 @@
   --site-muted: var(--color-gray);
   --site-panel: var(--color-glass);
   --profile-panel-bg: rgba(95, 104, 121, 0.055);
+  --navbar-bg: rgba(247, 247, 244, 0.88);
   --site-border: rgba(73, 84, 105, 0.14);
   --site-shadow: rgba(78, 83, 125, 0.14);
   --site-hover-shadow: rgba(168, 216, 240, 0.13);
@@ -124,7 +126,7 @@ body:has(.landing) {
     var(--site-page-gutter),
     calc((100vw - var(--site-content-max)) / 2)
   );
-  background: color-mix(in srgb, var(--site-page-bg) 88%, transparent);
+  background: var(--navbar-bg);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
@@ -349,17 +351,7 @@ main.content .focus-line > p {
   line-height: 1.1;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  animation: identity-name-collapse linear both;
-  animation-range: 0 8rem;
-  animation-timeline: scroll(root block);
-}
-
-@keyframes identity-name-collapse {
-  to {
-    background: color-mix(in srgb, var(--site-page-bg) 88%, transparent);
-    font-size: 1.4rem;
-    letter-spacing: -0.025em;
-  }
+  background: var(--navbar-bg);
 }
 
 .focus-line {
@@ -979,10 +971,9 @@ body.has-enhanced-toc #TOC a {
 
 @media (prefers-reduced-motion: reduce) {
   .identity-name {
-    background: color-mix(in srgb, var(--site-page-bg) 88%, transparent);
+    background: var(--navbar-bg);
     font-size: 1.4rem;
     letter-spacing: -0.025em;
-    animation: none;
   }
 
   main.content a:not(.contact-link),
@@ -1050,6 +1041,7 @@ body.quarto-dark {
   --site-muted: var(--color-stone);
   --site-panel: var(--color-graphite);
   --profile-panel-bg: rgba(169, 169, 165, 0.08);
+  --navbar-bg: rgba(25, 25, 25, 0.88);
   --site-border: rgba(255, 255, 255, 0.105);
   --site-shadow: rgba(0, 0, 0, 0.28);
   --site-hover-shadow: rgba(0, 0, 0, 0.22);
@@ -1116,6 +1108,7 @@ body.quarto-dark .profile-image {
     --site-muted: var(--color-stone);
     --site-panel: var(--color-graphite);
     --profile-panel-bg: rgba(169, 169, 165, 0.08);
+    --navbar-bg: rgba(25, 25, 25, 0.88);
     --site-border: rgba(255, 255, 255, 0.105);
     --site-shadow: rgba(0, 0, 0, 0.28);
     --site-hover-shadow: rgba(0, 0, 0, 0.22);
@@ -1181,10 +1174,20 @@ body.quarto-dark .profile-image {
   }
 
   .site-navbar {
-    width: 100%;
-    margin-inline: 0;
-    padding: 0.8rem 0;
-    background: var(--site-page-bg);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    margin: 0;
+    padding: calc(0.8rem + env(safe-area-inset-top)) var(--site-page-gutter) 0.8rem;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  body:not(:has(.landing)) #quarto-content {
+    padding-top: calc(2.7rem + env(safe-area-inset-top));
   }
 
   #quarto-content.page-columns {
@@ -1225,7 +1228,7 @@ body.quarto-dark .profile-image {
     grid-row: 1;
     margin: 0 calc(-1 * var(--site-page-gutter));
     padding: 0.8rem var(--site-page-gutter);
-    background: var(--site-page-bg);
+    background: var(--navbar-bg);
     font-size: clamp(2.75rem, 12vw, 3.5rem);
   }
 

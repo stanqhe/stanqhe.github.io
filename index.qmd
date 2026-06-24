@@ -6,8 +6,6 @@ toc: false
 ---
 
 ::: {.landing}
-<div class="identity-name" role="heading" aria-level="1">Stan Q. He</div>
-
 <!-- Keep the profile stack independent from the introduction grid. -->
 :::: {.profile-details}
 ::: {.profile-column}

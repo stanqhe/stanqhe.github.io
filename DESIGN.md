@@ -38,9 +38,9 @@ typography:
   display:
     fontFamily: "Outfit"
     fontWeight: 600
-    letterSpacing: "-0.055em"
+    letterSpacing: "-0.025em"
   section-heading:
-    fontFamily: "Outfit"
+    fontFamily: "Inter"
     fontWeight: 600
     letterSpacing: "-0.025em"
   label:
@@ -97,7 +97,7 @@ themes:
     canvas: "{colors.starlight}"
     surface: "{colors.glass}"
     surface_subtle: "rgba(95,104,121,0.055)"
-    navbar: "rgba(247,247,244,0.88)"
+    navbar: "{colors.starlight}"
     text_primary: "{colors.black}"
     text_muted: "{colors.gray}"
     border: "rgba(73,84,105,0.14)"
@@ -117,7 +117,7 @@ themes:
     canvas: "{colors.midnight}"
     surface: "{colors.graphite}"
     surface_subtle: "rgba(169,169,165,0.08)"
-    navbar: "rgba(25,25,25,0.88)"
+    navbar: "{colors.midnight}"
     text_primary: "{colors.white}"
     text_muted: "{colors.stone}"
     border: "rgba(255,255,255,0.105)"
@@ -214,7 +214,7 @@ Primitive tokens → Themes → Roles → Components → Page implementation
 - **Primitive tokens** are top-level raw values: `colors`, `typography`, `spacing`, and `rounded`. Compatibility aliases such as `rounded.full` may coexist with site-native names such as `rounded.pill`.
 - **Themes** map tokens into light and dark mode.
 - **Roles** define how interface elements behave: text, link, button, highlight, fill, border, TOC.
-- **Components** apply roles to site patterns: navbar, landing identity, right TOC, footer, project cards.
+- **Components** apply roles to site patterns: navbar, homepage profile, right TOC, footer, project cards.
 - **Implementation** should reference existing CSS variables whenever possible.
 
 The top-level YAML maps are the single machine-readable token source. The `themes → roles` model is the preferred reasoning path for changes to this site.
@@ -249,9 +249,9 @@ These values are not permanent brand absolutes. They may be challenged later if 
 | Role | Light | Dark | Notes |
 |---|---|---|---|
 | `canvas` | `starlight` | `midnight` | Page background. |
-| `surface` | `glass` | `graphite` | Cards, panels, navbar/TOC surfaces. |
+| `surface` | `glass` | `graphite` | Cards, panels, and expanded TOC surfaces. |
 | `surface_subtle` | `rgba(95,104,121,0.055)` | `rgba(169,169,165,0.08)` | Profile/contact panels. |
-| `navbar` | `rgba(247,247,244,0.88)` | `rgba(25,25,25,0.88)` | Sticky navbar surface. |
+| `navbar` | `starlight` | `midnight` | Fixed opaque navbar surface. |
 | `text_primary` | `black` | `white` | Main prose and headings. |
 | `text_muted` | `gray` | `stone` | Metadata, intro support text, captions. |
 | `border` | `rgba(73,84,105,0.14)` | `rgba(255,255,255,0.105)` | Default quiet border. |
@@ -317,15 +317,16 @@ Only introduce full numeric ramps when multiple components need shared ordered i
 Typography should feel editorial, not promotional.
 
 - **Inter** is the default body and UI font.
-- **Outfit** is the display font for the identity name and landing-page headings.
+- **Outfit** is reserved for the `Stan Q. He` identity mark in the global navbar.
+- **Inter** is used for content-page titles, section headings, body text, labels, metadata, and UI text.
 - Body: `clamp(1rem, 0.98rem + 0.1vw, 1.06rem)`, line-height `1.65`.
 - Paragraph gap: `1.1rem`.
-- Landing identity: Outfit, weight `600`, letter-spacing around `-0.055em`.
-- Section heading: Outfit, weight `600`, letter-spacing around `-0.025em`.
+- Navbar identity: Outfit, weight `600`, letter-spacing around `-0.025em`.
+- Section heading: Inter, weight `600`, letter-spacing around `-0.025em`.
 - Labels/eyebrows: Inter, weight `600`, small size, slight positive letter spacing.
 - Use `font-display: swap` for local web fonts.
 - Do not introduce additional fonts unless the whole identity is being redesigned.
-- Avoid huge marketing H1s on content pages and excessive all-caps.
+- Avoid huge marketing H1s on content pages, viewport-scaled content headings, and excessive all-caps.
 
 ## Layout
 
@@ -333,6 +334,8 @@ The site has two major modes: a personal landing page and Quarto-native content 
 
 - Max content width: `936px`.
 - Page gutter: `clamp(1.25rem, 4vw, 1.375rem)`.
+- Use the Terms of Use/content-page margin model as the standard across pages.
+- At intermediate widths, preserve the same TOC-aware inset across homepage and content pages so navbar text and page content align.
 - Preserve comfortable line length.
 - Do not stretch prose across the full viewport.
 - Let tables and code breathe without turning project pages into dashboards unless the content genuinely requires it.
@@ -340,7 +343,8 @@ The site has two major modes: a personal landing page and Quarto-native content 
 ### Landing page
 
 - Desktop: profile column on the left, intro column on the right.
-- Mobile: single column; identity remains prominent; portrait and links stack intentionally.
+- Mobile: single column; portrait and links stack intentionally.
+- The homepage uses the same global navbar as content pages; do not add a second page-local identity bar.
 - Profile image is square, softly framed, and not over-stylized.
 - Contact links are compact and icon-led.
 
@@ -348,6 +352,8 @@ The site has two major modes: a personal landing page and Quarto-native content 
 
 - Work with Quarto’s generated structure instead of replacing it wholesale.
 - Keep title blocks, headings, sections, lists, code, and figures readable.
+- Keep page titles and section headings stable across viewport widths.
+- Keep generated page descriptions as metadata unless the page explicitly needs visible subtitle copy.
 - Prefer standard long-form hierarchy over app-like card layouts.
 - Use the right TOC as content navigation, not decoration.
 
@@ -358,6 +364,7 @@ Depth is atmospheric, not dramatic.
 - Light mode may use cool soft shadows.
 - Dark mode should rely more on surface contrast and less on glow.
 - Bottom-edge radial glows are allowed.
+- The global navbar is an opaque stable surface, not a glass surface.
 - Strong button glow, center-stage gradients, floating blobs, neon glows, and decorative glass panels are not allowed as default style.
 
 Preferred surface recipes:
@@ -372,7 +379,6 @@ Motion should clarify, not entertain.
 - Use subtle hover transitions around `150–220ms`.
 - TOC reveal/collapse can be animated.
 - Heading flash can fade.
-- Identity collapse can respond to scroll.
 - Buttons should not float or glow by default; prefer border, text, or subtle surface changes.
 - A tiny vertical translation is acceptable for compact icon links, but not required.
 - Always respect `prefers-reduced-motion`.
@@ -400,7 +406,6 @@ Components should preserve Quarto-native content depth while giving the site a c
 Current components:
 
 - Navbar
-- Landing identity
 - Profile image
 - Contact links
 - Right table of contents
@@ -417,10 +422,13 @@ Do not add future components just because they are listed here. Use these rules 
 
 ### Navbar
 
-- Minimal sticky, blurred neutral surface on content pages.
-- Hidden on the landing page if the identity block already performs that role.
+- Fixed opaque neutral surface on all pages, including the homepage.
+- Safe-area/top region and navbar background should read as one continuous surface.
 - Current default: brand/name only.
+- Use Outfit only for the brand/name mark.
+- Align the brand with the same responsive content margin used by the page body.
 - Add global links only when the site has enough sections to justify them.
+- Do not use a blurred, floating, or translucent glass navbar.
 - Do not add a heavy navbar just to imitate large company sites.
 
 ### Right table of contents
@@ -438,13 +446,13 @@ The enhanced TOC is a signature interaction.
 
 - Small, quiet, metadata/legal oriented.
 - Keep copyright and Terms of Use visible.
+- Footer links are muted and undecorated by default; on hover or focus, use neutral primary text and underline.
 - Avoid turning the footer into a second navbar unless the site grows substantially.
 
 ### Landing identity
 
-- Identity name is prominent but not performative.
-- Use Outfit, tight letter spacing, and restrained weight.
-- Scroll-based collapse may be used, but must be smooth, subtle, and disabled/reduced under reduced-motion preferences.
+- The homepage uses the global navbar identity instead of a separate landing-page identity header.
+- Do not add scroll-based identity collapse unless the homepage identity model is intentionally redesigned.
 
 ### Project cards
 

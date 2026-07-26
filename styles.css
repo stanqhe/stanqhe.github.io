@@ -81,6 +81,7 @@
   --site-muted: var(--color-gray);
   --site-panel: var(--color-glass);
   --profile-panel-bg: rgba(95, 104, 121, 0.055);
+  --inline-code-bg: rgba(95, 104, 121, 0.055);
   --navbar-bg: var(--color-starlight);
   --site-border: rgba(73, 84, 105, 0.14);
   --site-shadow: rgba(78, 83, 125, 0.14);
@@ -201,6 +202,13 @@ main.content a:not(.contact-link) {
 main.content a:not(.contact-link):hover,
 main.content a:not(.contact-link):focus-visible {
   color: var(--site-muted);
+}
+
+main.content :not(pre) > code {
+  padding: 0.08em 0.28em;
+  border-radius: 0.25rem;
+  color: var(--site-ink);
+  background: var(--inline-code-bg);
 }
 
 #quarto-content {
@@ -330,15 +338,12 @@ main.content .focus-line > p {
   color: var(--site-ink);
   background: transparent;
   text-decoration: none;
-  transition:
-    transform 160ms ease,
-    color 160ms ease;
+  transition: color 160ms ease;
 }
 
 .contact-link:hover,
 .contact-link:focus-visible {
   color: var(--site-muted);
-  transform: translateY(-2px);
 }
 
 .contact-link i {
@@ -1121,6 +1126,7 @@ body.quarto-dark {
   --site-muted: var(--color-stone);
   --site-panel: var(--color-graphite);
   --profile-panel-bg: rgba(169, 169, 165, 0.08);
+  --inline-code-bg: color-mix(in srgb, var(--color-graphite) 92%, var(--color-stone));
   --navbar-bg: var(--color-midnight);
   --site-border: rgba(255, 255, 255, 0.105);
   --site-shadow: rgba(0, 0, 0, 0.28);
@@ -1188,6 +1194,7 @@ body.quarto-dark .profile-image {
     --site-muted: var(--color-stone);
     --site-panel: var(--color-graphite);
     --profile-panel-bg: rgba(169, 169, 165, 0.08);
+    --inline-code-bg: color-mix(in srgb, var(--color-graphite) 92%, var(--color-stone));
     --navbar-bg: var(--color-midnight);
     --site-border: rgba(255, 255, 255, 0.105);
     --site-shadow: rgba(0, 0, 0, 0.28);

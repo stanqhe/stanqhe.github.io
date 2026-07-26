@@ -1,13 +1,17 @@
 const initializeMegaMenu = () => {
   const menuNames = ["work", "study", "life"];
-  const openClasses = menuNames.map((name) => `show-mega-${name}`);
   const desktop = window.matchMedia("(min-width: 721px)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const backdrop = document.querySelector("[data-mega-backdrop]");
+  const surface = document.querySelector("[data-mega-surface]");
   const navbar = document.querySelector(".site-navbar");
   const triggerGroup = document.querySelector(".site-navbar-links");
   const closeDelay = 140;
+  const switchDuration = 190;
   let activeName = null;
   let closeTimer = null;
+  let switchTimer = null;
+  let switchFrame = null;
 
   const items = menuNames
     .map((name) => {
@@ -18,24 +22,37 @@ const initializeMegaMenu = () => {
     })
     .filter(Boolean);
 
-  if (!items.length) {
+  if (!items.length || !surface) {
     return;
   }
 
-  const updateMenuTop = () => {
+  const activeItem = () => items.find(({ name }) => name === activeName);
+
+  const updateMenuHeight = (item = activeItem()) => {
+    if (item) {
+      document.documentElement.style.setProperty(
+        "--site-mega-height",
+        `${item.panel.scrollHeight}px`,
+      );
+    }
+  };
+
+  const updateMenuGeometry = () => {
     if (navbar) {
       document.documentElement.style.setProperty(
         "--site-mega-top",
         `${navbar.getBoundingClientRect().bottom}px`,
       );
     }
+
+    updateMenuHeight();
   };
 
-  updateMenuTop();
-  window.addEventListener("resize", updateMenuTop, { passive: true });
+  updateMenuGeometry();
+  window.addEventListener("resize", updateMenuGeometry, { passive: true });
 
   if (navbar && "ResizeObserver" in window) {
-    new ResizeObserver(updateMenuTop).observe(navbar);
+    new ResizeObserver(updateMenuGeometry).observe(navbar);
   }
 
   const cancelClose = () => {
@@ -43,11 +60,57 @@ const initializeMegaMenu = () => {
     closeTimer = null;
   };
 
+  const finishSwitch = () => {
+    window.clearTimeout(switchTimer);
+    switchTimer = null;
+
+    if (switchFrame !== null) {
+      window.cancelAnimationFrame(switchFrame);
+      switchFrame = null;
+    }
+
+    document.body.classList.remove("is-mega-switching");
+    items.forEach(({ panel, name }) => {
+      panel.classList.remove("is-entering", "is-leaving");
+      panel.classList.toggle("is-active", name === activeName);
+    });
+  };
+
   const closeMenu = () => {
     cancelClose();
-    document.body.classList.remove(...openClasses);
-    items.forEach(({ trigger }) => trigger.setAttribute("aria-expanded", "false"));
+    finishSwitch();
+    document.body.classList.remove("show-mega-menu");
+    items.forEach(({ trigger, panel }) => {
+      trigger.setAttribute("aria-expanded", "false");
+      panel.classList.remove("is-active");
+    });
     activeName = null;
+  };
+
+  const switchPanel = (nextItem) => {
+    const previousItem = activeItem();
+
+    finishSwitch();
+    activeName = nextItem.name;
+    document.body.classList.add("is-mega-switching");
+    nextItem.panel.classList.add("is-entering");
+    updateMenuHeight(nextItem);
+    previousItem.panel.classList.remove("is-active");
+    previousItem.panel.classList.add("is-leaving");
+
+    if (reducedMotion.matches) {
+      nextItem.panel.classList.remove("is-entering");
+      nextItem.panel.classList.add("is-active");
+      finishSwitch();
+      return;
+    }
+
+    switchFrame = window.requestAnimationFrame(() => {
+      switchFrame = null;
+      nextItem.panel.classList.remove("is-entering");
+      nextItem.panel.classList.add("is-active");
+      switchTimer = window.setTimeout(finishSwitch, switchDuration);
+    });
   };
 
   const openMenu = (name) => {
@@ -62,40 +125,58 @@ const initializeMegaMenu = () => {
       return;
     }
 
-    document.body.classList.remove(...openClasses);
-    document.body.classList.add(`show-mega-${name}`);
+    const nextItem = items.find(({ name: itemName }) => itemName === name);
+
+    if (!nextItem) {
+      return;
+    }
+
+    const wasOpen = activeName !== null;
+
+    if (wasOpen) {
+      switchPanel(nextItem);
+    } else {
+      activeName = name;
+      updateMenuHeight(nextItem);
+      nextItem.panel.classList.add("is-active");
+      document.body.classList.add("show-mega-menu");
+    }
+
     items.forEach(({ name: itemName, trigger }) => {
       trigger.setAttribute("aria-expanded", String(itemName === name));
     });
-    activeName = name;
   };
+
+  const navigationRegionContainsFocus = () =>
+    Boolean(triggerGroup?.matches(":focus-within") || surface.matches(":focus-within"));
+
+  const navigationRegionContainsPointer = () =>
+    Boolean(triggerGroup?.matches(":hover") || surface.matches(":hover"));
 
   const scheduleClose = () => {
     cancelClose();
     closeTimer = window.setTimeout(() => {
-      const activeItem = items.find(({ name }) => name === activeName);
-      const focusWithinMenu = activeItem &&
-        (activeItem.trigger.matches(":focus") || activeItem.panel.matches(":focus-within"));
-
-      if (!focusWithinMenu) {
+      if (!navigationRegionContainsFocus() && !navigationRegionContainsPointer()) {
         closeMenu();
       }
     }, closeDelay);
   };
 
-  items.forEach(({ name, trigger, panel }) => {
+  items.forEach(({ name, trigger }) => {
     trigger.addEventListener("pointerenter", () => openMenu(name));
     trigger.addEventListener("focus", () => openMenu(name));
     trigger.addEventListener("blur", scheduleClose);
-
-    panel.addEventListener("pointerenter", cancelClose);
-    panel.addEventListener("pointerleave", scheduleClose);
-    panel.addEventListener("focusin", cancelClose);
-    panel.addEventListener("focusout", scheduleClose);
   });
 
   triggerGroup?.addEventListener("pointerenter", cancelClose);
   triggerGroup?.addEventListener("pointerleave", scheduleClose);
+  triggerGroup?.addEventListener("focusin", cancelClose);
+  triggerGroup?.addEventListener("focusout", scheduleClose);
+
+  surface.addEventListener("pointerenter", cancelClose);
+  surface.addEventListener("pointerleave", scheduleClose);
+  surface.addEventListener("focusin", cancelClose);
+  surface.addEventListener("focusout", scheduleClose);
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && activeName) {

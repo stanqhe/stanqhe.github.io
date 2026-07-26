@@ -9,7 +9,8 @@ contract: Preserve neutral editorial structure, quiet atmospheric color, Quarto-
 
 implementation:
   framework: "Quarto"
-  css_file: "styles.css"
+  css_files: ["styles.css", "styles/mega-menu.css"]
+  interaction_scripts: ["scripts/mega-menu.js", "toc-enhance.js"]
   output_dir: "_site"
   dark_mode: "Quarto dark theme, body.quarto-dark overrides, and prefers-color-scheme fallback"
 
@@ -73,7 +74,17 @@ components:
   contact-link:
     color: "{colors.black}"
     darkColor: "{colors.white}"
-    interaction: "Small vertical translation and muted color on hover or focus."
+    interaction: "Muted color only on hover or focus; no translation, scaling, or pop motion."
+  mega-menu:
+    backgroundColor: "{themes.light.navbar}"
+    darkBackgroundColor: "{themes.dark.navbar}"
+    interaction: "Desktop-only top-down surface reveal; content fades vertically on open and crossfades in place between sections."
+  inline-code:
+    color: "{themes.light.text_primary}"
+    darkColor: "{themes.dark.text_primary}"
+    backgroundColor: "{themes.light.surface_subtle}"
+    darkBackgroundColor: "color-mix(in srgb, {colors.graphite} 92%, {colors.stone})"
+    treatment: "Use primary theme text on a borderless quiet neutral surface with compact inline padding and a 0.25rem radius instead of Quarto's default purple. The dark surface resolves to #303030, benchmarked from Codex, using existing Arc tokens. Do not alter fenced code blocks."
   contact-strip:
     backgroundColor: "{themes.light.surface_subtle}"
     darkBackgroundColor: "{themes.dark.surface_subtle}"
@@ -147,7 +158,7 @@ roles:
   button:
     intent: "Confirm action clearly without promotional styling."
     default: "Use neutral ink/white inversion for primary actions; use glass or graphite surfaces with quiet borders for secondary actions."
-    interaction: "Prefer border-color, text-color, or subtle surface changes. Tiny vertical translation is acceptable only for compact icon links."
+    interaction: "Prefer border-color, text-color, or subtle surface changes. Navbar, mega-menu, and contact links do not translate or scale on hover."
 
   highlight:
     intent: "Emphasize reading state or rare editorial detail."
@@ -280,7 +291,7 @@ These values are not permanent brand absolutes. They may be challenged later if 
 ### Interaction states
 
 - **Default:** neutral text, neutral border, or quiet surface.
-- **Hover:** use muted text, stronger underline, subtle border change, or a small surface shift.
+- **Hover:** use muted text, stronger underline, or a subtle border/surface change. Contact links use color only, without lift or scale.
 - **Focus:** every interactive element must have a visible `:focus-visible` state. Never remove an outline without an accessible replacement.
 - **Active/current:** use weight, marker shape, underline, or text label in addition to color.
 - **Disabled:** lower contrast only when the control is truly unavailable; do not rely on opacity alone if meaning would become unclear.
@@ -291,7 +302,7 @@ Accessibility is part of the visual system, not a later audit.
 
 - Body text and essential UI text should meet WCAG AA contrast.
 - Do not signal state with color alone; pair color with text, weight, underline, shape, marker length, icon, or position.
-- Preserve keyboard access for links, contact icons, the table of contents, and future controls.
+- Preserve keyboard access for links, contact icons, the desktop mega-menu, the table of contents, and future controls.
 - Keep touch targets practical on mobile, especially icon-only contact links and future navigation.
 - Respect `prefers-reduced-motion` for scroll-based identity behavior, TOC reveal, heading flash, and any future animation.
 - Check light and dark mode together when changing color, shadow, focus, or hover behavior.
@@ -352,6 +363,7 @@ The site has two major modes: a personal landing page and Quarto-native content 
 
 - Work with Quarto’s generated structure instead of replacing it wholesale.
 - Keep title blocks, headings, sections, lists, code, and figures readable.
+- Render inline code in primary theme text on a subtle neutral surface; reserve syntax colors for fenced code blocks.
 - Keep page titles and section headings stable across viewport widths.
 - Keep generated page descriptions as metadata unless the page explicitly needs visible subtitle copy.
 - Prefer standard long-form hierarchy over app-like card layouts.
@@ -377,10 +389,12 @@ Preferred surface recipes:
 Motion should clarify, not entertain.
 
 - Use subtle hover transitions around `150–220ms`.
+- The desktop mega-menu surface unfolds downward from beneath the navbar and retracts upward; its content fades with a restrained `6px` vertical offset on open.
+- Switching between open mega-menu sections crossfades content in place without horizontal movement.
 - TOC reveal/collapse can be animated.
 - Heading flash can fade.
 - Buttons should not float or glow by default; prefer border, text, or subtle surface changes.
-- A tiny vertical translation is acceptable for compact icon links, but not required.
+- Contact links change color without translation, scaling, or pop motion.
 - Always respect `prefers-reduced-motion`.
 - Do not add decorative parallax, constant animation, or cursor-follow effects.
 
@@ -424,10 +438,15 @@ Do not add future components just because they are listed here. Use these rules 
 
 - Fixed opaque neutral surface on all pages, including the homepage.
 - Safe-area/top region and navbar background should read as one continuous surface.
-- Current default: brand/name only.
+- Current desktop navigation: the `Stan Q. He` brand plus `Work`, `Study`, and `Life` links.
 - Use Outfit only for the brand/name mark.
-- Align the brand with the same responsive content margin used by the page body.
-- Add global links only when the site has enough sections to justify them.
+- Align the brand, navigation, and mega-menu content with the same responsive content width used by the page body.
+- Navbar and mega-menu links are undecorated; hover and focus change text color without an underline.
+- On desktop, hovering or focusing `Work`, `Study`, or `Life` opens the matching compact mega-menu directly beneath the navbar. Clicking the navbar link still navigates normally.
+- Keep the navigation region continuous so moving between triggers or into the panel does not flicker. Close after a short delay when both trigger region and panel are left; `Escape` and backdrop click also close it.
+- Use a fixed dimmed backdrop with `backdrop-filter: blur(12px)` between page content and the menu. Keep the navbar and menu sharp.
+- The menu uses the navbar background in both themes, a subtle bottom divider, content-based height, and no cards, rounded containers, gradients, or heavy shadows.
+- Hide the custom mega-menu and backdrop below the desktop breakpoint and preserve Quarto's mobile navigation.
 - Do not use a blurred, floating, or translucent glass navbar.
 - Do not add a heavy navbar just to imitate large company sites.
 

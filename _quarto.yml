@@ -16,7 +16,9 @@ format:
     theme:
       light: cosmo
       dark: darkly
-    css: styles.css
+    css:
+      - styles/mega-menu.css
+      - styles.css
     toc: true
     toc-location: right
     toc-depth: 3
@@ -26,6 +28,8 @@ format:
       - theme-toggle-scroll.html
     include-before-body:
       - site-navbar.html
+      - includes/mega-menu.html
     include-after-body:
       - toc-enhance.html
+      - includes/mega-menu-script.html
     respect-user-color-scheme: true

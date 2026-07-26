@@ -1,0 +1,5 @@
+---
+title: "Study"
+---
+
+Technical writing, analytical frameworks, and selected learning artifacts.

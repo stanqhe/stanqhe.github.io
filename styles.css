@@ -125,6 +125,10 @@ body:has(.landing) {
   right: 0;
   left: 0;
   z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
   isolation: isolate;
   box-sizing: border-box;
   width: 100vw;
@@ -159,6 +163,26 @@ body:has(.landing) {
 .site-navbar-brand:hover,
 .site-navbar-brand:focus-visible {
   color: var(--site-muted);
+}
+
+.site-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.75rem);
+}
+
+.site-navbar-links a {
+  color: var(--site-ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  transition: color 180ms ease;
+}
+
+.site-navbar-links a:hover,
+.site-navbar-links a:focus-visible {
+  color: var(--site-muted);
+  text-decoration: none !important;
 }
 
 body a {
@@ -1030,6 +1054,7 @@ body.has-enhanced-toc #TOC a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .site-navbar-links a,
   main.content a:not(.contact-link),
   body.has-enhanced-toc #quarto-margin-sidebar,
   body.has-enhanced-toc #TOC,

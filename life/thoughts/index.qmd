@@ -1,5 +1,19 @@
 ---
 title: "Thoughts"
+description: "A curated collection of thoughts from Stan H."
+toc: false
+listing:
+  contents: "*.qmd"
+  type: default
+  sort: "date desc"
+  fields: [image, categories, title, date]
+  image-align: left
+  image-height: 166px
+  image-placeholder: "/assets/images/strarts_mark.svg"
+  date-format: "MMM D, YYYY"
+  page-size: 20
+  sort-ui: false
+  filter-ui: false
 ---
 
-A curated collection of thoughts from Stan H. 
+A curated collection of thoughts from Stan H.

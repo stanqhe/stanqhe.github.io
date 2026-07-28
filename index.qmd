@@ -1,6 +1,6 @@
 ---
-pagetitle: "Stan Q. He | Business Analytics"
-description: "Stan Q. He is an MSBA candidate at UC San Diego focused on business analytics, product experimentation, and decision intelligence."
+pagetitle: "Stan Q. He"
+description: "Stan Q. He is an MSBA candidate at UC San Diego exploring business analytics, product strategy, and AI-enabled transformation through projects and writing."
 title-block-banner: false
 toc: false
 ---

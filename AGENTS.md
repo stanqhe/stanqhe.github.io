@@ -59,7 +59,11 @@ Apply any global or higher-level agent instructions by default; when this file g
 ## Build and Validation
 
 - Use the narrowest relevant validation for the change.
-- For visual, layout, navigation, Quarto config, or publishing-related changes, run `quarto render` when practical.
+- Assume the user may already be running the site preview at `http://localhost:2027`.
+- Do not start, restart, stop, or background the preview server unless explicitly asked.
+- After a coherent round of rendered-site changes, check the affected pages when the existing preview server is available.
+- Do not write preview responses to temporary files unless inspecting the generated HTML is necessary.
+- If the preview server is unavailable, report that rendered validation was not completed rather than starting one automatically.
 - For content-only edits, check the affected page and obvious links when practical.
 - For generated-output or publishing changes, verify `_site/` ignore behavior with `git check-ignore -v _site` when relevant.
 - Before handoff after file edits, run `git diff --check` when practical.

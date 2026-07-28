@@ -1,0 +1,66 @@
+$if(listing)$
+<header id="title-block-header" class="quarto-title-block default">
+  <div class="quarto-title">
+    $if(title)$
+    <h1 class="title">$title$</h1>
+    $endif$
+    $if(subtitle)$
+    <p class="subtitle lead">$subtitle$</p>
+    $endif$
+  </div>
+
+  $if(hide-description)$
+  $elseif(description)$
+  <div>
+    <div class="description">$description$</div>
+  </div>
+  $endif$
+
+  $title-metadata.html()$
+</header>
+$else$
+<header id="title-block-header" class="quarto-title-block thoughts-article-header">
+  <div class="thoughts-article-heading">
+    $if(title)$
+    <h1 class="title">$title$</h1>
+    $endif$
+
+    $if(hide-description)$
+    $elseif(description)$
+    <div class="description">$description$</div>
+    $endif$
+  </div>
+
+  <div class="thoughts-article-utility">
+    <div class="thoughts-article-meta" aria-label="Article details">
+      $for(by-author)$
+      <span class="thoughts-article-author">$_title-meta-author.html()$</span>
+      $endfor$
+      $if(date)$
+      <span class="thoughts-article-date">$date$</span>
+      $endif$
+      $for(categories)$
+      <a class="thoughts-article-category" href="/life/thoughts/#category=$categories$">$categories$</a>
+      $endfor$
+    </div>
+
+    <button
+      class="thoughts-article-share"
+      type="button"
+      aria-describedby="thoughts-share-status"
+    >
+      <i class="bi bi-link-45deg" aria-hidden="true"></i>
+      <span>Share</span>
+    </button>
+  </div>
+
+  <div class="thoughts-share-fallback" hidden>
+    <label for="thoughts-share-url">Copy article link</label>
+    <input id="thoughts-share-url" type="text" readonly>
+  </div>
+  <p id="thoughts-share-status" class="visually-hidden" role="status" aria-live="polite"></p>
+
+  <hr class="thoughts-article-divider">
+</header>
+<script src="/scripts/thoughts-article-header.js"></script>
+$endif$

@@ -1,0 +1,51 @@
+---
+title: "Style on Life"
+description: "A reflection on how to live with intention and purpose, considering the constraints of time, energy, and resources."
+author: "Stan H."
+date: 2025-12-31
+categories: Keynote
+featured: true
+---
+## Fundamental Theorem of Existence
+
+**We exist as the form of human being, living under constraints shaped by uncertainty - Time, Energy, and Resource.** 
+
+We do not know the length of our lives, yet we know time flows forever.
+
+We do not know the strength of tomorrow’s spirit, yet we know the body seeks rhythm in rest and hunger.
+
+We do not know the wealth that will come or go, yet we know all resources drift with chance and choice.
+
+| **Constraint** | **Meaning** | **Uncertainty** |
+| --- | --- | --- |
+| Time | Life span | Random deviation from dynamic expectancy |
+| Energy | Personal Wellbeing | Random fluctuation over baseline physical wellness according to mental condition |
+| Resource | Societal Capital | Random allocation among changing parties under changing circumstances |
+
+$$
+\text{existence of life} \space | \space (T, E, C)
+$$
+
+Given these constraints, life naturally follows a trajectory — “a touch of destiny.” Self-awareness embodies our willingness to make the journey meaningful, while free will empowers us to make decisions that may even more or less alter the constraints that impact our life.
+
+## My Style
+
+**I intend to live in a style of my own.**
+
+To do this, I formed a model called **`Strat`**, which reflects on my past journey and provides guidance for future decisions in real time. 
+
+To better organize the data processed by Strat, I created an entity named **`STRARTS`,** which responds to these constraints and echoes the fundamental dimensions of life - Lifestyle, Education, Profession, or in simple terms: **Life**, **Study**, and **Work**.
+
+| Dimension | Goal | Business Group in STRARTS |
+| --- | --- | --- |
+| Lifestyle | Enrich the life journey | SANT |
+| Education | Learn how to accumulate and release energy properly | ECHO |
+| Profession | Strive to obtain capital | MOTE |
+
+These three dimensions are interdependent and together form a cycle of quality life.
+
+To enrich our life journey, we need a mentally fit mind and a physically healthy body, both supported by the resources we gather. A colorful lifestyle lays the foundation for learning how to cultivate and release our energy wisely, which in turn enables us to obtain resources essential for our life to be colorful.
+
+I hope this two-way cycle among the three dimensions form a spiral of growth, with its by-products contributing to the society as a whole and its legacy, if any, benefiting the civilization of mankind.
+
+Following such style, I live without regret “as a life”.

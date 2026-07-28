@@ -1,0 +1,7 @@
+format:
+  html:
+    body-classes: thoughts-article
+    canonical-url: true
+    template-partials:
+      - ../../includes/title-block.html
+      - ../../includes/thoughts-article-header.html

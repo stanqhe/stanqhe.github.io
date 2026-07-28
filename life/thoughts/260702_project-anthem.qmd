@@ -9,7 +9,7 @@ featured: true
 
 Project ANTHEM is my first major initiative after defining the Adaptive Strength Cycle.
 
-In [Style on Life](<Style on Life.qmd>), I described life through the constraints of time, energy, and resources. STRARTS gave that idea a structure, organizing life across lifestyle, learning, and profession. The Adaptive Strength Cycle later reframed growth as a continuous movement through direction, system, capability, artifact, selection, and renewal.
+In [Style on Life](<251231_style-on-life.qmd>), I described life through the constraints of time, energy, and resources. STRARTS gave that idea a structure, organizing life across lifestyle, learning, and profession. The Adaptive Strength Cycle later reframed growth as a continuous movement through direction, system, capability, artifact, selection, and renewal.
 
 Project ANTHEM begins from a new condition: **AI is becoming a shared layer across life, study, and work**, blurring boundaries that once felt easier to separate.
 

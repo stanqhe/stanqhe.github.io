@@ -18,18 +18,18 @@ format:
       dark: darkly
     css:
       - styles/mega-menu.css
-      - styles.css
+      - styles/main.css
     toc: true
     toc-location: right
     toc-depth: 3
     smooth-scroll: true
     anchor-sections: false
     include-in-header:
-      - theme-toggle-scroll.html
+      - includes/theme-toggle-scroll.html
     include-before-body:
-      - site-navbar.html
+      - includes/site-navbar.html
       - includes/mega-menu.html
     include-after-body:
-      - toc-enhance.html
+      - includes/toc-enhance.html
       - includes/mega-menu-script.html
     respect-user-color-scheme: true

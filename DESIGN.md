@@ -9,8 +9,8 @@ contract: Preserve neutral editorial structure, quiet atmospheric color, Quarto-
 
 implementation:
   framework: "Quarto"
-  css_files: ["styles.css", "styles/mega-menu.css"]
-  interaction_scripts: ["scripts/mega-menu.js", "toc-enhance.js"]
+  css_files: ["styles/main.css", "styles/mega-menu.css"]
+  interaction_scripts: ["scripts/mega-menu.js", "scripts/toc-enhance.js"]
   output_dir: "_site"
   dark_mode: "Quarto dark theme, body.quarto-dark overrides, and prefers-color-scheme fallback"
 
@@ -192,7 +192,7 @@ Arc Design defines the visual and interaction language for Stan Q. He’s person
 
 ## Source of truth
 
-Use this file for design intent and decision-making. Use `styles.css` as the implementation source of truth for the live site; if the two disagree, inspect the current CSS before changing behavior, then update whichever side is stale.
+Use this file for design intent and decision-making. Use `styles/main.css` as the implementation source of truth for the live site; if the two disagree, inspect the current CSS before changing behavior, then update whichever side is stale.
 
 The YAML front matter keeps a small, machine-readable token surface: top-level `colors`, `typography`, `spacing`, `rounded`, and `components` expose reusable primitives. The `themes` and `roles` maps are project-specific extensions that preserve Arc Design’s implementation model without repeating raw token values.
 

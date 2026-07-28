@@ -16,9 +16,9 @@ The site serves as a public home for selected projects, writing, presentations, 
 ├── index.qmd            # Homepage source
 ├── legal.qmd            # Terms of Use source
 ├── work/ study/ life/   # Section landing pages and local content
-├── includes/             # Shared desktop mega-menu markup
-├── scripts/              # Mega-menu interaction
-├── styles.css            # Core site styling
+├── includes/             # Shared HTML fragments and template partials
+├── scripts/              # Browser-side interactions
+├── styles/main.css       # Core site styling
 ├── styles/mega-menu.css  # Desktop mega-menu styling
 ├── assets/               # Fonts, images, and other site assets
 ├── _site/                # Generated website output (ignored by Git)

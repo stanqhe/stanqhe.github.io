@@ -35,11 +35,16 @@ Apply any global or higher-level agent instructions by default; when this file g
 
 ## Project Structure
 
-- Keep page content in `.qmd` files.
-- Keep site configuration in `_quarto.yml` and other Quarto configuration files.
-- Keep styling in the existing style files and directories.
-- Keep images, icons, favicons, and visual assets under `assets/`.
-- Keep legal or policy content in the existing legal page unless asked to restructure it.
+- Treat the existing top-level directory structure as canonical.
+- Keep primary content within the corresponding `work/`, `study/`, or `life/` section, with page and article content in `.qmd` files.
+- Keep site-wide configuration in `_quarto.yml` and other Quarto configuration files.
+- Keep reusable HTML fragments in `includes/`, browser-side JavaScript in `scripts/`, stylesheets in `styles/`, and static resources in `assets/`; preserve exact filenames where Quarto or existing template references depend on them.
+- Keep collection index pages and shared metadata beside the content they govern.
+- Keep repository infrastructure in `.github/` and `.devcontainer/`.
+- Keep legal and policy content in the existing legal page unless explicitly asked to restructure it.
+- Prefer extending existing files and directories over creating new abstractions for a single feature.
+- Do not create, rename, move, or remove top-level directories, or introduce generic layers unless explicitly requested.
+- When an approved structural change affects file paths, update all related references, configuration, and documentation in the same change.
 
 ## Design Rules
 

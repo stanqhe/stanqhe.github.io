@@ -1,1 +1,66 @@
-$thoughts-article-header.html()$
+$if(listing)$
+<header id="title-block-header" class="quarto-title-block default">
+  <div class="quarto-title">
+    $if(title)$
+    <h1 class="title">$title$</h1>
+    $endif$
+    $if(subtitle)$
+    <p class="subtitle lead">$subtitle$</p>
+    $endif$
+  </div>
+
+  $if(hide-description)$
+  $elseif(description)$
+  <div>
+    <div class="description">$description$</div>
+  </div>
+  $endif$
+
+  $title-metadata.html()$
+</header>
+$else$
+<header id="title-block-header" class="quarto-title-block editorial-header">
+  <div class="editorial-heading">
+    $if(title)$
+    <h1 class="title">$title$</h1>
+    $endif$
+
+    $if(hide-description)$
+    $elseif(description)$
+    <div class="description">$description$</div>
+    $endif$
+  </div>
+
+  <div class="editorial-utility">
+    <div class="editorial-meta" aria-label="Article details">
+      $for(by-author)$
+      <span class="editorial-author">$_title-meta-author.html()$</span>
+      $endfor$
+      $if(date)$
+      <span class="editorial-date">$date$</span>
+      $endif$
+      $for(categories)$
+      <a class="editorial-category" href="/life/thoughts/#category=$categories$">$categories$</a>
+      $endfor$
+    </div>
+
+    <button
+      class="editorial-share"
+      type="button"
+      aria-describedby="editorial-share-status"
+    >
+      <i class="bi bi-link-45deg" aria-hidden="true"></i>
+      <span>Share</span>
+    </button>
+  </div>
+
+  <div class="editorial-share-fallback" hidden>
+    <label for="editorial-share-url">Copy article link</label>
+    <input id="editorial-share-url" type="text" readonly>
+  </div>
+  <p id="editorial-share-status" class="visually-hidden" role="status" aria-live="polite"></p>
+
+  <hr class="editorial-divider">
+</header>
+<script src="/scripts/editorial-header.js"></script>
+$endif$

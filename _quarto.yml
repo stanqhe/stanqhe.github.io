@@ -19,6 +19,9 @@ format:
     css:
       - styles/mega-menu.css
       - styles/main.css
+      - styles/editorial.css
+      - styles/listing.css
+      - styles/toc.css
     toc: true
     toc-location: right
     toc-depth: 3

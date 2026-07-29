@@ -175,18 +175,23 @@ body.is-mega-switching .site-mega-panel.is-active {
   .site-mega-shell {
     display: block;
   }
+
+  .site-navbar-links a[data-mega-menu] {
+    position: relative;
+  }
+
+  .site-navbar-links a[data-mega-menu]::before {
+    position: absolute;
+    inset: -0.8rem 0;
+    content: "";
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .site-mega-backdrop,
   .site-mega-surface,
   .site-mega-panel,
-  .site-mega-inner,
   .site-mega-link {
     transition: none !important;
-  }
-
-  .site-mega-inner {
-    transform: none;
   }
 }

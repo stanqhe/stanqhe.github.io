@@ -1,0 +1,115 @@
+/* Editorial page header (currently used by Thoughts articles) */
+
+body.editorial-page:not(:has(#listing-listing)) #title-block-header {
+  margin-bottom: clamp(1.4rem, 3vw, 2rem);
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  #title-block-header
+  .description {
+  display: block !important;
+  margin-top: 0.75rem;
+  color: var(--site-muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.editorial-utility {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  color: var(--site-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.editorial-meta {
+  display: flex;
+  min-width: 0;
+  align-items: baseline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.editorial-meta > * {
+  flex: 0 0 auto;
+}
+
+.editorial-meta > * + *::before {
+  margin: 0 0.55em;
+  color: var(--site-muted);
+  content: "\00b7";
+  opacity: 0.72;
+}
+
+.editorial-category {
+  overflow: hidden;
+  color: var(--site-muted);
+  text-decoration: none;
+  text-overflow: ellipsis;
+}
+
+.editorial-category:hover,
+.editorial-category:focus-visible {
+  color: var(--site-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--site-border);
+  text-underline-offset: 0.18em;
+}
+
+.editorial-share {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  border: 0;
+  color: var(--site-muted);
+  background: transparent;
+  font: inherit;
+  line-height: inherit;
+}
+
+.editorial-share:hover,
+.editorial-share:focus-visible {
+  color: var(--site-ink);
+}
+
+.editorial-share:focus-visible {
+  border-radius: 0.35rem;
+  outline: 2px solid color-mix(in srgb, var(--site-muted) 58%, transparent);
+  outline-offset: 4px;
+}
+
+.editorial-share-fallback {
+  margin-top: 0.85rem;
+  color: var(--site-muted);
+  font-size: 0.82rem;
+}
+
+.editorial-share-fallback label {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.editorial-share-fallback input {
+  width: 100%;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--site-border);
+  border-radius: 0.35rem;
+  color: var(--site-ink);
+  background: transparent;
+  font: inherit;
+}
+
+.editorial-divider {
+  width: 100%;
+  margin: 1.15rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--site-border);
+  opacity: 1;
+}

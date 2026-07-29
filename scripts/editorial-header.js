@@ -1,14 +1,14 @@
 (() => {
-  const shareButton = document.querySelector(".thoughts-article-share");
+  const shareButton = document.querySelector(".editorial-share");
 
   if (!shareButton) {
     return;
   }
 
   const shareLabel = shareButton.querySelector("span");
-  const status = document.querySelector("#thoughts-share-status");
-  const fallback = document.querySelector(".thoughts-share-fallback");
-  const fallbackInput = document.querySelector("#thoughts-share-url");
+  const status = document.querySelector("#editorial-share-status");
+  const fallback = document.querySelector(".editorial-share-fallback");
+  const fallbackInput = document.querySelector("#editorial-share-url");
   let restoreLabelTimer;
 
   const canonicalUrl = () => {

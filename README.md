@@ -18,8 +18,11 @@ The site serves as a public home for selected projects, writing, presentations, 
 ├── work/ study/ life/   # Section landing pages and local content
 ├── includes/             # Shared HTML fragments and template partials
 ├── scripts/              # Browser-side interactions
-├── styles/main.css       # Core site styling
+├── styles/main.css       # Global site styling
 ├── styles/mega-menu.css  # Desktop mega-menu styling
+├── styles/editorial.css  # Detailed editorial page styling
+├── styles/listing.css    # Reusable content-listing styling
+├── styles/toc.css        # Enhanced table-of-contents styling
 ├── assets/               # Fonts, images, and other site assets
 ├── _site/                # Generated website output (ignored by Git)
 └── .github/workflows/    # GitHub Actions publishing workflow
@@ -27,7 +30,7 @@ The site serves as a public home for selected projects, writing, presentations, 
 
 ## Design
 
-[`DESIGN.md`](DESIGN.md) is the visual and interaction contract for the site. The current navigation uses a compact desktop mega-menu aligned to the main content width, with light/dark theme parity, an understated blurred backdrop, keyboard support, and Quarto's native mobile navigation below the desktop breakpoint. Hover feedback remains restrained: navigation and contact links change color without underline, lift, scale, or pop effects.
+[`DESIGN.md`](DESIGN.md) is the visual and interaction contract for the site. The current navigation uses a compact desktop mega-menu aligned to the main content width, with light/dark theme parity, an understated blurred backdrop, and keyboard support. The custom site navbar remains visible on mobile, while the mega-menu and backdrop are hidden below the desktop breakpoint. Hover feedback remains restrained: navigation and contact links change color without underline, lift, scale, or pop effects.
 
 ## Development
 

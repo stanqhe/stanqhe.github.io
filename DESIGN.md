@@ -9,8 +9,8 @@ contract: Preserve neutral editorial structure, quiet atmospheric color, Quarto-
 
 implementation:
   framework: "Quarto"
-  css_files: ["styles/main.css", "styles/mega-menu.css"]
-  interaction_scripts: ["scripts/mega-menu.js", "scripts/toc-enhance.js"]
+  css_files: ["styles/mega-menu.css", "styles/main.css", "styles/editorial.css", "styles/listing.css", "styles/toc.css"]
+  interaction_scripts: ["scripts/mega-menu.js", "scripts/toc-enhance.js", "scripts/editorial-header.js"]
   output_dir: "_site"
   dark_mode: "Quarto dark theme, body.quarto-dark overrides, and prefers-color-scheme fallback"
 
@@ -98,8 +98,8 @@ components:
     rounded: "{rounded.md}"
     border: "Low-contrast neutral border."
   right-toc:
-    currentMarkerColor: "{colors.blue}"
-    darkCurrentMarkerColor: "{colors.sky_blue}"
+    currentMarkerColor: "{colors.black}"
+    darkCurrentMarkerColor: "{colors.white}"
     surface: "{colors.glass}"
     darkSurface: "{colors.graphite}"
 
@@ -119,7 +119,7 @@ themes:
     link_hover: "{colors.gray}"
     link_underline: "color-mix(in srgb, {colors.gray} 45%, transparent)"
     highlight: "rgba(95,104,121,0.12)"
-    toc_current: "{colors.blue}"
+    toc_current: "{colors.black}"
     glow_blue: "rgba(168,216,240,0.07)"
     glow_lavender: "rgba(246,241,250,0.04)"
     glow_gold: "rgba(255,252,245,0.05)"
@@ -139,7 +139,7 @@ themes:
     link_hover: "{colors.stone}"
     link_underline: "rgba(169,169,165,0.45)"
     highlight: "rgba(169,169,165,0.14)"
-    toc_current: "{colors.sky_blue}"
+    toc_current: "{colors.white}"
     glow_blue: "rgba(168,216,240,0.025)"
     glow_lavender: "rgba(246,241,250,0.015)"
     glow_gold: "rgba(255,252,245,0.012)"
@@ -192,7 +192,7 @@ Arc Design defines the visual and interaction language for Stan Q. He’s person
 
 ## Source of truth
 
-Use this file for design intent and decision-making. Use `styles/main.css` as the implementation source of truth for the live site; if the two disagree, inspect the current CSS before changing behavior, then update whichever side is stale.
+Use this file for design intent and decision-making. Use the stylesheets listed in `css_files` as the implementation source of truth for the live site; if they disagree with this document, inspect the current CSS before changing behavior, then update whichever side is stale.
 
 The YAML front matter keeps a small, machine-readable token surface: top-level `colors`, `typography`, `spacing`, `rounded`, and `components` expose reusable primitives. The `themes` and `roles` maps are project-specific extensions that preserve Arc Design’s implementation model without repeating raw token values.
 
@@ -273,7 +273,7 @@ These values are not permanent brand absolutes. They may be challenged later if 
 | `link_hover` | `gray` | `stone` | Hover state for prose links. |
 | `link_underline` | muted neutral underline | muted neutral underline | Normal editorial link underline. |
 | `highlight` | `rgba(95,104,121,0.12)` | `rgba(169,169,165,0.14)` | Heading flash and quiet editorial highlight. |
-| `toc_current` | `blue` | `sky_blue` | Navigation state marker. |
+| `toc_current` | `black` | `white` | Navigation state marker. |
 | `glow_blue` | low-opacity blue | lower-opacity blue | Atmospheric bottom glow. |
 | `glow_lavender` | low-opacity lavender | lower-opacity lavender | Atmospheric bottom glow. |
 | `glow_gold` | low-opacity light gold | lower-opacity light gold | Atmospheric bottom glow. |
@@ -446,7 +446,7 @@ Do not add future components just because they are listed here. Use these rules 
 - Keep the navigation region continuous so moving between triggers or into the panel does not flicker. Close after a short delay when both trigger region and panel are left; `Escape` and backdrop click also close it.
 - Use a fixed dimmed backdrop with `backdrop-filter: blur(12px)` between page content and the menu. Keep the navbar and menu sharp.
 - The menu uses the navbar background in both themes, a subtle bottom divider, content-based height, and no cards, rounded containers, gradients, or heavy shadows.
-- Hide the custom mega-menu and backdrop below the desktop breakpoint and preserve Quarto's mobile navigation.
+- Hide the custom mega-menu and backdrop below `721px`; keep the custom site navbar and its `Work`, `Study`, and `Life` links visible on mobile.
 - Do not use a blurred, floating, or translucent glass navbar.
 - Do not add a heavy navbar just to imitate large company sites.
 

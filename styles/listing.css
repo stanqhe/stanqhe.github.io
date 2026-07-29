@@ -48,7 +48,7 @@ main.content:has(> #listing-listing) .quarto-post .thumbnail-image {
   height: 10.375rem !important;
   border: 0;
   border-radius: 0.75rem;
-  background: var(--profile-panel-bg);
+  background: var(--site-media-bg);
   object-fit: cover;
   transition: opacity 160ms ease;
 }
@@ -180,4 +180,3 @@ main.content:has(> #listing-listing) .quarto-post a:focus-visible {
     margin-top: 0.65rem;
   }
 }
-

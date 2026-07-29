@@ -60,25 +60,29 @@
   --color-sky-blue: #f0f9ff;
   --color-lavender: #f6f1fa;
   --color-light-gold: #fffcf5;
-  --color-starlight: #f7f7f4;
-  --color-midnight: #191919;
-  --color-glass: rgba(255, 255, 255, 0.72);
-  --color-graphite: #252525;
-  --color-black: #172033;
-  --color-gray: #5f6879;
-  --color-white: #f1f1ef;
+  --color-daylight: #f5f5f7;
+  --color-frost: #fafafc;
+  --color-snow: #ffffff;
+  --color-cloud: #e9eaea;
+  --color-ink: #1d1d1f;
+  --color-slate: #6e6e73;
+  --color-midnight: #181818;
+  --color-charcoal: #252525;
+  --color-graphite: #303030;
   --color-stone: #a9a9a5;
+  --color-glass: rgba(255, 255, 255, 0.72);
 
   --site-accent-lavender: var(--color-purple);
   --site-accent-gold: var(--color-gold);
-  --heading-flash-bg: rgba(95, 104, 121, 0.12);
-  --site-page-bg: var(--color-starlight);
-  --site-ink: var(--color-black);
-  --site-muted: var(--color-gray);
-  --site-panel: var(--color-glass);
-  --profile-panel-bg: rgba(95, 104, 121, 0.055);
-  --inline-code-bg: rgba(95, 104, 121, 0.055);
-  --navbar-bg: var(--color-starlight);
+  --heading-flash-bg: rgba(110, 110, 115, 0.12);
+  --site-page-bg: var(--color-daylight);
+  --site-ink: var(--color-ink);
+  --site-muted: var(--color-slate);
+  --site-panel: var(--color-snow);
+  --site-media-bg: var(--color-frost);
+  --profile-panel-bg: var(--color-snow);
+  --inline-code-bg: var(--color-cloud);
+  --navbar-bg: var(--color-daylight);
   --site-border: rgba(73, 84, 105, 0.14);
   --site-shadow: rgba(78, 83, 125, 0.14);
   --site-glow-blue: rgba(168, 216, 240, 0.07);
@@ -188,17 +192,17 @@ body a {
   color: inherit;
 }
 
-main.content a:not(.contact-link) {
+main.content a:not(.contact-link):not(.editorial-category) {
   color: var(--site-ink);
   text-decoration-line: underline;
-  text-decoration-color: color-mix(in srgb, var(--site-muted) 45%, transparent);
-  text-decoration-thickness: 0.06em;
-  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--site-ink) 55%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
   transition: color 150ms ease;
 }
 
-main.content a:not(.contact-link):hover,
-main.content a:not(.contact-link):focus-visible {
+main.content a:not(.contact-link):not(.editorial-category):hover,
+main.content a:not(.contact-link):not(.editorial-category):focus-visible {
   color: var(--site-muted);
 }
 
@@ -275,8 +279,8 @@ main.content .focus-line > p {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  border: 1px solid var(--site-border);
   border-radius: 0.75rem;
+  background: var(--site-media-bg);
   box-shadow: 0 1.25rem 3.5rem var(--site-shadow);
 }
 
@@ -288,7 +292,6 @@ main.content .focus-line > p {
   box-sizing: border-box;
   width: 100%;
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--site-border);
   border-radius: 999px;
   background: var(--profile-panel-bg);
   backdrop-filter: blur(18px);
@@ -300,11 +303,11 @@ main.content .focus-line > p {
   gap: var(--site-paragraph-gap);
   grid-column: 1;
   grid-row: 1;
+  transform: translateY(1px);
 }
 
 .identity-block {
   padding: 0.9rem 1rem;
-  border: 1px solid var(--site-border);
   border-radius: 0.9rem;
   background: var(--profile-panel-bg);
   box-shadow: 0 0.5rem 1.5rem color-mix(in srgb, var(--site-shadow) 45%, transparent);
@@ -330,7 +333,7 @@ main.content .focus-line > p {
   padding: 0.2rem;
   border: 0;
   border-radius: 50%;
-  color: var(--site-ink);
+  color: var(--site-muted);
   background: transparent;
   text-decoration: none;
   transition: color 160ms ease;
@@ -338,7 +341,7 @@ main.content .focus-line > p {
 
 .contact-link:hover,
 .contact-link:focus-visible {
-  color: var(--site-muted);
+  color: var(--site-ink);
 }
 
 .contact-link i {
@@ -357,6 +360,7 @@ main.content .focus-line > p {
 }
 
 .bio-lead {
+  color: var(--site-ink);
   white-space: nowrap;
 }
 
@@ -375,7 +379,7 @@ main.content .focus-line > p {
 
 .intro-column > p {
   max-width: 39rem;
-  color: var(--site-muted);
+  color: var(--site-ink);
   font-size: inherit;
   line-height: inherit;
 }
@@ -515,15 +519,16 @@ body:not(:has(.landing)) main.content section[id].heading-flash > h3 {
   text-decoration: underline;
 }
 
-/* Dark mode: space gray / Notion dark, with minimal glow */
+/* Dark mode: midnight canvas with distinct card, media, and code surfaces */
 
 body.quarto-dark {
   --site-page-bg: var(--color-midnight);
-  --site-ink: var(--color-white);
+  --site-ink: var(--color-snow);
   --site-muted: var(--color-stone);
-  --site-panel: var(--color-graphite);
-  --profile-panel-bg: rgba(169, 169, 165, 0.08);
-  --inline-code-bg: color-mix(in srgb, var(--color-graphite) 92%, var(--color-stone));
+  --site-panel: var(--color-charcoal);
+  --site-media-bg: var(--color-charcoal);
+  --profile-panel-bg: var(--color-charcoal);
+  --inline-code-bg: var(--color-graphite);
   --navbar-bg: var(--color-midnight);
   --site-border: rgba(255, 255, 255, 0.105);
   --site-shadow: rgba(0, 0, 0, 0.28);
@@ -561,13 +566,13 @@ body.quarto-dark .nav-footer a:focus-visible {
 }
 
 body.quarto-dark .contact-link {
-  color: var(--site-ink);
+  color: var(--site-muted);
   background: transparent;
 }
 
 body.quarto-dark .contact-link:hover,
 body.quarto-dark .contact-link:focus-visible {
-  color: var(--site-muted);
+  color: var(--site-ink);
 }
 
 body.quarto-dark .profile-image {
@@ -579,11 +584,12 @@ body.quarto-dark .profile-image {
 @media (prefers-color-scheme: dark) {
   body:not(.quarto-light) {
     --site-page-bg: var(--color-midnight);
-    --site-ink: var(--color-white);
+    --site-ink: var(--color-snow);
     --site-muted: var(--color-stone);
-    --site-panel: var(--color-graphite);
-    --profile-panel-bg: rgba(169, 169, 165, 0.08);
-    --inline-code-bg: color-mix(in srgb, var(--color-graphite) 92%, var(--color-stone));
+    --site-panel: var(--color-charcoal);
+    --site-media-bg: var(--color-charcoal);
+    --profile-panel-bg: var(--color-charcoal);
+    --inline-code-bg: var(--color-graphite);
     --navbar-bg: var(--color-midnight);
     --site-border: rgba(255, 255, 255, 0.105);
     --site-shadow: rgba(0, 0, 0, 0.28);
@@ -621,13 +627,13 @@ body.quarto-dark .profile-image {
   }
 
   body:not(.quarto-light) .contact-link {
-    color: var(--site-ink);
+    color: var(--site-muted);
     background: transparent;
   }
 
   body:not(.quarto-light) .contact-link:hover,
   body:not(.quarto-light) .contact-link:focus-visible {
-    color: var(--site-muted);
+    color: var(--site-ink);
   }
 
   body:not(.quarto-light) .profile-image {
@@ -669,6 +675,7 @@ body.quarto-dark .profile-image {
   .profile-details {
     grid-column: 1;
     grid-row: 1;
+    transform: none;
   }
 
   .profile-column {

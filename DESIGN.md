@@ -21,14 +21,17 @@ colors:
   sky_blue: "#f0f9ff"
   lavender: "#f6f1fa"
   light_gold: "#fffcf5"
-  starlight: "#f7f7f4"
-  midnight: "#191919"
-  glass: "rgba(255,255,255,0.72)"
-  graphite: "#252525"
-  black: "#172033"
-  gray: "#5f6879"
-  white: "#f1f1ef"
+  daylight: "#f5f5f7"
+  frost: "#fafafc"
+  snow: "#ffffff"
+  cloud: "#e9eaea"
+  ink: "#1d1d1f"
+  slate: "#6e6e73"
+  midnight: "#181818"
+  charcoal: "#252525"
+  graphite: "#303030"
   stone: "#a9a9a5"
+  glass: "rgba(255,255,255,0.72)"
 
 typography:
   body:
@@ -68,13 +71,13 @@ rounded:
 
 components:
   prose-link:
-    color: "{colors.black}"
-    darkColor: "{colors.white}"
-    decoration: "Subtle neutral underline; muted text on hover or focus."
+    color: "{themes.light.text_primary}"
+    darkColor: "{themes.dark.text_primary}"
+    decoration: "One-pixel neutral underline with a 0.2em offset; keep the underline steady and shift linked text to the muted theme color on hover or focus."
   contact-link:
-    color: "{colors.black}"
-    darkColor: "{colors.white}"
-    interaction: "Muted color only on hover or focus; no translation, scaling, or pop motion."
+    color: "{themes.light.text_muted}"
+    darkColor: "{themes.dark.text_muted}"
+    interaction: "Shift to primary theme text on hover or focus; no translation, scaling, or pop motion."
   mega-menu:
     backgroundColor: "{themes.light.navbar}"
     darkBackgroundColor: "{themes.dark.navbar}"
@@ -82,64 +85,70 @@ components:
   inline-code:
     color: "{themes.light.text_primary}"
     darkColor: "{themes.dark.text_primary}"
-    backgroundColor: "{themes.light.surface_subtle}"
-    darkBackgroundColor: "color-mix(in srgb, {colors.graphite} 92%, {colors.stone})"
-    treatment: "Use primary theme text on a borderless quiet neutral surface with compact inline padding and a 0.25rem radius instead of Quarto's default purple. The dark surface resolves to #303030, benchmarked from Codex, using existing Arc tokens. Do not alter fenced code blocks."
+    backgroundColor: "{themes.light.surface_code}"
+    darkBackgroundColor: "{themes.dark.surface_code}"
+    treatment: "Use primary theme text on the dedicated Codex-benchmarked code surface with compact inline padding and a 0.25rem radius. Keep code surfaces semantically separate from cards and media. Do not alter fenced code blocks."
   contact-strip:
-    backgroundColor: "{themes.light.surface_subtle}"
-    darkBackgroundColor: "{themes.dark.surface_subtle}"
+    backgroundColor: "{themes.light.surface_card}"
+    darkBackgroundColor: "{themes.dark.surface_card}"
     rounded: "{rounded.pill}"
+    border: "none"
   identity-panel:
-    backgroundColor: "{themes.light.surface_subtle}"
-    darkBackgroundColor: "{themes.dark.surface_subtle}"
+    backgroundColor: "{themes.light.surface_card}"
+    darkBackgroundColor: "{themes.dark.surface_card}"
     rounded: "{rounded.lg}"
+    border: "none"
     surface: "Low-emphasis panel for landing-page identity support text."
   profile-image:
+    backgroundColor: "{themes.light.surface_media}"
+    darkBackgroundColor: "{themes.dark.surface_media}"
     rounded: "{rounded.md}"
-    border: "Low-contrast neutral border."
+    border: "none"
   right-toc:
-    currentMarkerColor: "{colors.black}"
-    darkCurrentMarkerColor: "{colors.white}"
-    surface: "{colors.glass}"
-    darkSurface: "{colors.graphite}"
+    currentMarkerColor: "{themes.light.text_primary}"
+    darkCurrentMarkerColor: "{themes.dark.text_primary}"
+    surface: "{themes.light.surface_card}"
+    darkSurface: "{themes.dark.surface_card}"
 
 themes:
   light:
-    canvas: "{colors.starlight}"
-    surface: "{colors.glass}"
-    surface_subtle: "rgba(95,104,121,0.055)"
-    navbar: "{colors.starlight}"
-    text_primary: "{colors.black}"
-    text_muted: "{colors.gray}"
+    canvas: "{colors.daylight}"
+    surface_card: "{colors.snow}"
+    surface_media: "{colors.frost}"
+    surface_code: "{colors.cloud}"
+    navbar: "{colors.daylight}"
+    text_primary: "{colors.ink}"
+    text_muted: "{colors.slate}"
     border: "rgba(73,84,105,0.14)"
     border_hover: "rgba(217,210,233,0.55)"
     shadow: "rgba(78,83,125,0.14)"
     hover_shadow: "rgba(168,216,240,0.13)"
-    link_text: "{colors.black}"
-    link_hover: "{colors.gray}"
-    link_underline: "color-mix(in srgb, {colors.gray} 45%, transparent)"
-    highlight: "rgba(95,104,121,0.12)"
-    toc_current: "{colors.black}"
+    link_text: "{colors.ink}"
+    link_hover: "{colors.slate}"
+    link_underline: "color-mix(in srgb, {colors.ink} 55%, transparent)"
+    highlight: "rgba(110,110,115,0.12)"
+    toc_current: "{colors.ink}"
     glow_blue: "rgba(168,216,240,0.07)"
     glow_lavender: "rgba(246,241,250,0.04)"
     glow_gold: "rgba(255,252,245,0.05)"
 
   dark:
     canvas: "{colors.midnight}"
-    surface: "{colors.graphite}"
-    surface_subtle: "rgba(169,169,165,0.08)"
+    surface_card: "{colors.charcoal}"
+    surface_media: "{colors.charcoal}"
+    surface_code: "{colors.graphite}"
     navbar: "{colors.midnight}"
-    text_primary: "{colors.white}"
+    text_primary: "{colors.snow}"
     text_muted: "{colors.stone}"
     border: "rgba(255,255,255,0.105)"
     border_hover: "rgba(217,210,233,0.22)"
     shadow: "rgba(0,0,0,0.28)"
     hover_shadow: "rgba(0,0,0,0.22)"
-    link_text: "{colors.white}"
+    link_text: "{colors.snow}"
     link_hover: "{colors.stone}"
-    link_underline: "rgba(169,169,165,0.45)"
+    link_underline: "color-mix(in srgb, {colors.snow} 55%, transparent)"
     highlight: "rgba(169,169,165,0.14)"
-    toc_current: "{colors.white}"
+    toc_current: "{colors.snow}"
     glow_blue: "rgba(168,216,240,0.025)"
     glow_lavender: "rgba(246,241,250,0.015)"
     glow_gold: "rgba(255,252,245,0.012)"
@@ -153,21 +162,21 @@ roles:
   link:
     intent: "Provide editorial navigation without turning prose into UI chrome."
     default: "Use neutral text with a subtle neutral underline."
-    interaction: "On hover or focus, use muted text, a stronger underline, or a clearer focus state."
+    interaction: "On hover or focus, shift prose-link text to the muted theme color while keeping the underline steady. Navigational and whole-card links may remain undecorated."
 
   button:
     intent: "Confirm action clearly without promotional styling."
-    default: "Use neutral ink/white inversion for primary actions; use glass or graphite surfaces with quiet borders for secondary actions."
+    default: "Use neutral ink/snow inversion for primary actions; use card surfaces with quiet borders for secondary actions."
     interaction: "Prefer border-color, text-color, or subtle surface changes. Navbar, mega-menu, and contact links do not translate or scale on hover."
 
   highlight:
     intent: "Emphasize reading state or rare editorial detail."
-    default: "Use muted gray/stone background for editorial highlights and heading flash."
+    default: "Use muted slate/stone background for editorial highlights and heading flash."
     interaction: "Temporary states may fade in and out quietly."
 
   surface:
     intent: "Create quiet structure without heavy cards."
-    default: "Use starlight/midnight for canvas; glass/graphite for panels; low-opacity neutral for subtle surfaces."
+    default: "Use daylight/midnight for the universal canvas; snow/charcoal for cards; frost/charcoal for media; and cloud/graphite for inline code. Keep the semantic roles independent even when two roles share a primitive."
     interaction: "Clickable surfaces may use subtle border, text, or background changes."
 
   border:
@@ -177,7 +186,7 @@ roles:
 
   toc:
     intent: "Provide Quarto-native reading orientation with minimal visual weight."
-    default: "Use collapsed dot/dash markers and an expanded glass/graphite panel with neutral text."
+    default: "Use collapsed dot/dash markers and an expanded snow/charcoal panel with neutral text."
     interaction: "Current section uses bold neutral text."
 
 color_system_growth:
@@ -244,14 +253,17 @@ Color should feel atmospheric and editorial, not promotional. The site uses neut
 | `sky_blue` | `#f0f9ff` | Soft wash, hover tint, quiet glow. |
 | `lavender` | `#f6f1fa` | Atmospheric finish, soft panel tint. |
 | `light_gold` | `#fffcf5` | Warm surface tint, bottom-edge glow. |
-| `starlight` | `#f7f7f4` | Light page canvas. |
-| `midnight` | `#191919` | Dark page canvas. |
-| `glass` | `rgba(255,255,255,0.72)` | Light surfaces. |
-| `graphite` | `#252525` | Dark surfaces. |
-| `black` | `#172033` | Main light-mode text. |
-| `gray` | `#5f6879` | Muted light-mode text. |
-| `white` | `#f1f1ef` | Main dark-mode text. |
+| `daylight` | `#f5f5f7` | Universal light canvas. |
+| `frost` | `#fafafc` | Light media and image surface. |
+| `snow` | `#ffffff` | Light cards and dark primary text. |
+| `cloud` | `#e9eaea` | Light inline-code surface. |
+| `ink` | `#1d1d1f` | Main light-mode text. |
+| `slate` | `#6e6e73` | Muted light-mode text. |
+| `midnight` | `#181818` | Universal dark canvas. |
+| `charcoal` | `#252525` | Dark cards and media surfaces. |
+| `graphite` | `#303030` | Dark inline-code surface. |
 | `stone` | `#a9a9a5` | Muted dark-mode text. |
+| `glass` | `rgba(255,255,255,0.72)` | Optional translucent overlay; not the default card surface. |
 
 These values are not permanent brand absolutes. They may be challenged later if contrast, tone, or long-form readability improves.
 
@@ -259,31 +271,32 @@ These values are not permanent brand absolutes. They may be challenged later if 
 
 | Role | Light | Dark | Notes |
 |---|---|---|---|
-| `canvas` | `starlight` | `midnight` | Page background. |
-| `surface` | `glass` | `graphite` | Cards, panels, and expanded TOC surfaces. |
-| `surface_subtle` | `rgba(95,104,121,0.055)` | `rgba(169,169,165,0.08)` | Profile/contact panels. |
-| `navbar` | `starlight` | `midnight` | Fixed opaque navbar surface. |
-| `text_primary` | `black` | `white` | Main prose and headings. |
-| `text_muted` | `gray` | `stone` | Metadata, intro support text, captions. |
+| `canvas` | `daylight` | `midnight` | Universal page background. |
+| `surface_card` | `snow` | `charcoal` | Cards, panels, and expanded TOC surfaces. |
+| `surface_media` | `frost` | `charcoal` | Image wrappers, thumbnails, and media fallback surfaces. |
+| `surface_code` | `cloud` | `graphite` | Inline code only; not a general card surface. |
+| `navbar` | `daylight` | `midnight` | Fixed opaque navbar surface. |
+| `text_primary` | `ink` | `snow` | Main prose and headings. |
+| `text_muted` | `slate` | `stone` | Metadata, intro support text, captions. |
 | `border` | `rgba(73,84,105,0.14)` | `rgba(255,255,255,0.105)` | Default quiet border. |
 | `border_hover` | `rgba(217,210,233,0.55)` | `rgba(217,210,233,0.22)` | Hover state; purple enters here. |
 | `shadow` | `rgba(78,83,125,0.14)` | `rgba(0,0,0,0.28)` | Surface depth. |
 | `hover_shadow` | `rgba(168,216,240,0.13)` | `rgba(0,0,0,0.22)` | Optional surface depth; not default button glow. |
-| `link_text` | `black` | `white` | Normal editorial prose links. |
-| `link_hover` | `gray` | `stone` | Hover state for prose links. |
-| `link_underline` | muted neutral underline | muted neutral underline | Normal editorial link underline. |
-| `highlight` | `rgba(95,104,121,0.12)` | `rgba(169,169,165,0.14)` | Heading flash and quiet editorial highlight. |
-| `toc_current` | `black` | `white` | Navigation state marker. |
+| `link_text` | `ink` | `snow` | Editorial links inherit the primary text hue. |
+| `link_hover` | `slate` | `stone` | Prose-link text color on hover or focus. |
+| `link_underline` | neutral ink underline | neutral snow underline | One-pixel prose underline with a `0.2em` offset; keep it steady on interaction. |
+| `highlight` | `rgba(110,110,115,0.12)` | `rgba(169,169,165,0.14)` | Heading flash and quiet editorial highlight. |
+| `toc_current` | `ink` | `snow` | Navigation state marker. |
 | `glow_blue` | low-opacity blue | lower-opacity blue | Atmospheric bottom glow. |
 | `glow_lavender` | low-opacity lavender | lower-opacity lavender | Atmospheric bottom glow. |
 | `glow_gold` | low-opacity light gold | lower-opacity light gold | Atmospheric bottom glow. |
 
 ### Roles
 
-- **Text:** main prose uses neutral ink; secondary text uses gray/stone. Use weight, spacing, or quiet background highlight instead of colored prose emphasis.
-- **Links:** prose links use neutral text and subtle underline. Hover/focus may use muted text, stronger underline, or clearer focus state.
-- **Buttons:** primary actions use black/white inversion; secondary actions use glass/graphite surfaces with quiet borders. Hover should confirm state through border, text, or subtle surface changes rather than glow.
-- **Highlights:** article highlights should be background states, not colored text. Heading flashes use muted gray/stone.
+- **Text:** main prose uses ink/snow; secondary text uses slate/stone. Use weight, spacing, or quiet background highlight instead of colored prose emphasis.
+- **Links:** prose links inherit primary text and use a neutral underline. Hover/focus shifts linked text to the muted theme color while keeping the underline steady; navigational and whole-card links may remain undecorated.
+- **Buttons:** primary actions use ink/snow inversion; secondary actions use card surfaces with quiet borders. Hover should confirm state through border, text, or subtle surface changes rather than glow.
+- **Highlights:** article highlights should be background states, not colored text. Heading flashes use muted slate/stone.
 - **Surfaces:** page and panel fills are neutral. Accent fills should be low-opacity tints and used sparingly.
 - **Borders:** default borders are low-contrast neutral; hover borders may lean lavender/purple.
 - **Charts:** blue may be primary, purple secondary, gold a single highlight. Always use legends when color implies meaning.
@@ -291,7 +304,7 @@ These values are not permanent brand absolutes. They may be challenged later if 
 ### Interaction states
 
 - **Default:** neutral text, neutral border, or quiet surface.
-- **Hover:** use muted text, stronger underline, or a subtle border/surface change. Contact links use color only, without lift or scale.
+- **Hover:** shift prose-link text to the muted theme color without changing its underline; controls may use a subtle border or surface change. Contact links use color only, without lift or scale.
 - **Focus:** every interactive element must have a visible `:focus-visible` state. Never remove an outline without an accessible replacement.
 - **Active/current:** use weight, marker shape, underline, or text label in addition to color.
 - **Disabled:** lower contrast only when the control is truly unavailable; do not rely on opacity alone if meaning would become unclear.
@@ -354,10 +367,11 @@ The site has two major modes: a personal landing page and Quarto-native content 
 ### Landing page
 
 - Desktop: profile column on the left, intro column on the right.
+- Use a `1px` downward optical offset on the desktop profile stack to compensate for the removed outlines; do not stretch or redistribute the stack.
 - Mobile: single column; portrait and links stack intentionally.
 - The homepage uses the same global navbar as content pages; do not add a second page-local identity bar.
 - Profile image is square, softly framed, and not over-stylized.
-- Contact links are compact and icon-led.
+- Contact links are compact and icon-led; use muted icons by default and primary text color on hover or focus.
 
 ### Content pages
 
@@ -381,8 +395,9 @@ Depth is atmospheric, not dramatic.
 
 Preferred surface recipes:
 
-- **Light:** translucent white surface, low-contrast border, cool shadow, blur around `18px`.
-- **Dark:** graphite surface, low-contrast white border, minimal glow, normal shadow.
+- **Light:** opaque snow card or frost media surface, low-contrast border, and cool shadow.
+- **Dark:** opaque charcoal card or media surface, low-contrast snow border, minimal glow, and normal shadow.
+- Reserve glass for an intentional translucent overlay rather than the default panel treatment.
 
 ## Motion
 
@@ -455,10 +470,10 @@ Do not add future components just because they are listed here. Use these rules 
 The enhanced TOC is a signature interaction.
 
 - Collapsed state: quiet dot/dash markers.
-- Expanded state: glass/graphite panel, neutral text, clear current section.
+- Expanded state: snow/charcoal card panel, neutral text, clear current section.
 - Current state: blue marker in light mode; sky-blue marker in dark mode.
 - Initial quiet peek is allowed once per session to teach discoverability.
-- Clicked headings may flash with muted gray/stone background, not blue.
+- Clicked headings may flash with muted slate/stone background, not blue.
 - Respect keyboard navigation, focus, escape, pointer type, and reduced motion.
 
 ### Footer
@@ -471,6 +486,8 @@ The enhanced TOC is a signature interaction.
 ### Landing identity
 
 - The homepage uses the global navbar identity instead of a separate landing-page identity header.
+- Render the main introduction paragraphs and degree line in primary theme text.
+- Reserve muted theme text for the supporting identity line beginning with “Exploring.”
 - Do not add scroll-based identity collapse unless the homepage identity model is intentionally redesigned.
 
 ### Project cards
@@ -490,8 +507,8 @@ The enhanced TOC is a signature interaction.
 
 ### Future forms and controls
 
-- Use neutral primary actions: black on light surfaces, white on dark surfaces, or the inverse when needed.
-- Secondary controls use transparent, glass, or graphite surfaces with low-contrast borders.
+- Use neutral primary actions: ink on light surfaces, snow on dark surfaces, or the inverse when needed.
+- Secondary controls use transparent or card surfaces with low-contrast borders; reserve glass for intentional overlays.
 - Inputs should inherit the page typography, use clear labels, and show visible focus states.
 - Error, warning, or success states may introduce semantic color only when paired with text or iconography.
 - Avoid importing a component framework unless the site grows into repeated interactive workflows.

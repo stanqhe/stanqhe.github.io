@@ -479,6 +479,7 @@ The enhanced TOC is a signature interaction.
 ### Footer
 
 - Small, quiet, metadata/legal oriented.
+- Align the copyright edge with the main content column at every viewport width.
 - Keep copyright and Terms of Use visible.
 - Footer links are muted and undecorated by default; on hover or focus, use neutral primary text and underline.
 - Avoid turning the footer into a second navbar unless the site grows substantially.
@@ -502,6 +503,8 @@ The enhanced TOC is a signature interaction.
 
 - Should feel like a publication archive.
 - Prefer lists, grouped sections, or restrained cards.
+- Preserve the thumbnail-left, content-right article row at every width. Use a fixed `6.125rem` thumbnail and `1.05rem` title through `50rem`, letting only the text column widen and reflow; above that breakpoint, switch to the fixed `18.45rem` thumbnail and `1.4rem` title.
+- Keep the STRARTS placeholder mark fixed at `2rem` in compact thumbnails and `4rem` in desktop thumbnails.
 - Use dates and tags quietly.
 - Use accent colors only for selected states or tiny markers.
 

@@ -448,6 +448,15 @@ body.has-enhanced-toc #TOC a {
     );
   }
 
+  footer.footer .nav-footer {
+    width: min(
+      calc(
+        100% - var(--site-page-gutter) - var(--site-page-gutter) - 3.5rem
+      ),
+      var(--site-content-max)
+    );
+  }
+
   body.has-enhanced-toc {
     --navbar-inline-padding: max(
       calc(var(--site-page-gutter) + 1.75rem),

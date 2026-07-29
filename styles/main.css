@@ -490,11 +490,20 @@ body:not(:has(.landing)) main.content section[id].heading-flash > h3 {
   font-size: 0.8rem;
 }
 
+footer.footer .nav-footer {
+  padding-inline: 0;
+}
+
 .nav-footer-left {
+  min-height: 0;
+  margin: 0;
   text-align: left;
 }
 
 .nav-footer-center {
+  min-height: 0;
+  margin: 0;
+  order: initial;
   text-align: right;
 }
 
@@ -715,17 +724,6 @@ body.quarto-dark .profile-image {
     text-align: left;
   }
 
-  .nav-footer-left {
-    min-height: 0;
-    margin: 0;
-    text-align: left;
-  }
-
-  .nav-footer-center {
-    min-height: 0;
-    margin: 0;
-    text-align: right;
-  }
 }
 
 @media (max-width: 480px) {

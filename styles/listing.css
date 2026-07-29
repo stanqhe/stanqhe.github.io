@@ -16,7 +16,7 @@ main.content:has(> #listing-listing) .quarto-listing-default {
 
 main.content:has(> #listing-listing) .quarto-post {
   display: grid;
-  grid-template-columns: minmax(13rem, 18.45rem) minmax(0, 1fr);
+  grid-template-columns: 18.45rem minmax(0, 1fr);
   grid-template-rows: auto auto;
   column-gap: clamp(1.75rem, 4vw, 2.5rem);
   row-gap: 0.65rem;
@@ -55,9 +55,23 @@ main.content:has(> #listing-listing) .quarto-post .thumbnail-image {
 
 main.content:has(> #listing-listing)
   .quarto-post
+  .card-img-top:has(.thumbnail-image[src$="strarts_mark.svg"]) {
+  display: grid;
+  place-items: center;
+  height: 10.375rem;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: var(--site-media-bg);
+}
+
+main.content:has(> #listing-listing)
+  .quarto-post
   .thumbnail-image[src$="strarts_mark.svg"] {
-  box-sizing: border-box;
-  padding: clamp(2rem, 5vw, 3.5rem);
+  width: 4rem;
+  height: 4rem !important;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
   object-fit: contain;
 }
 
@@ -95,7 +109,7 @@ body:not(:has(.landing))
   .listing-title {
   order: 1;
   margin: 0 !important;
-  font-size: clamp(1.25rem, 1.08rem + 0.55vw, 1.55rem);
+  font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.18;
@@ -143,40 +157,69 @@ main.content:has(> #listing-listing) .quarto-post a:focus-visible {
   outline-offset: 4px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 50rem) {
   main.content:has(> #listing-listing) > p:first-of-type {
     margin-bottom: 2.25rem;
   }
 
   main.content:has(> #listing-listing) .quarto-post {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 0;
+    grid-template-columns: 6.125rem minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 1rem;
+    row-gap: 0.4rem;
     min-height: 0;
-    padding: 1.75rem 0 2rem;
+    padding: 1.5rem 0;
   }
 
   main.content:has(> #listing-listing) .quarto-post .thumbnail {
     grid-column: 1;
-    grid-row: 1;
-    margin-bottom: 1.25rem;
+    grid-row: 1 / span 2;
+    margin: 0;
   }
 
   main.content:has(> #listing-listing) .quarto-post .thumbnail-image {
     height: auto !important;
-    max-height: 16rem;
     aspect-ratio: 16 / 9;
   }
 
+  main.content:has(> #listing-listing)
+    .quarto-post
+    .card-img-top:has(.thumbnail-image[src$="strarts_mark.svg"]) {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  main.content:has(> #listing-listing)
+    .quarto-post
+    .thumbnail-image[src$="strarts_mark.svg"] {
+    width: 2rem;
+    height: 2rem !important;
+  }
+
   main.content:has(> #listing-listing) .quarto-post .body {
-    grid-column: 1;
-    grid-row: 2;
-    align-self: auto;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
   }
 
   main.content:has(> #listing-listing) .quarto-post .metadata {
-    grid-column: 1;
-    grid-row: 3;
-    margin-top: 0.65rem;
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+  }
+
+  body:not(:has(.landing))
+    main.content:has(> #listing-listing)
+    .quarto-post
+    .listing-title {
+    font-size: 1.05rem;
+  }
+
+  main.content:has(> #listing-listing) .quarto-post .listing-categories {
+    margin-bottom: 0.35rem;
+  }
+
+  main.content:has(> #listing-listing) .quarto-post .listing-date {
+    font-size: 0.82rem;
   }
 }

@@ -1,6 +1,11 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - "*.qmd"
+    - "life/**/*.qmd"
+    - "study/**/*.qmd"
+    - "work/**/*.qmd"
 
 website:
   title: "Stan Q. He"
@@ -17,22 +22,22 @@ format:
       light: cosmo
       dark: darkly
     css:
-      - styles/mega-menu.css
-      - styles/main.css
-      - styles/editorial.css
-      - styles/listing.css
-      - styles/toc.css
+      - _styles/mega-menu.css
+      - _styles/main.css
+      - _styles/editorial.css
+      - _styles/listing.css
+      - _styles/toc.css
     toc: true
     toc-location: right
     toc-depth: 3
     smooth-scroll: true
     anchor-sections: false
     include-in-header:
-      - includes/theme-toggle-scroll.html
+      - _includes/theme-toggle-scroll.html
     include-before-body:
-      - includes/site-navbar.html
-      - includes/mega-menu.html
+      - _includes/site-navbar.html
+      - _includes/mega-menu.html
     include-after-body:
-      - includes/toc-enhance.html
-      - includes/mega-menu-script.html
+      - _includes/toc-enhance.html
+      - _includes/mega-menu-script.html
     respect-user-color-scheme: true

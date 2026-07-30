@@ -9,8 +9,8 @@ contract: Preserve neutral editorial structure, quiet atmospheric color, Quarto-
 
 implementation:
   framework: "Quarto"
-  css_files: ["styles/mega-menu.css", "styles/main.css", "styles/editorial.css", "styles/listing.css", "styles/toc.css"]
-  interaction_scripts: ["scripts/mega-menu.js", "scripts/toc-enhance.js", "scripts/editorial-header.js"]
+  css_files: ["_styles/mega-menu.css", "_styles/main.css", "_styles/editorial.css", "_styles/listing.css", "_styles/toc.css"]
+  interaction_scripts: ["_scripts/mega-menu.js", "_scripts/toc-enhance.js", "_scripts/editorial-header.js"]
   output_dir: "_site"
   dark_mode: "Quarto dark theme, body.quarto-dark overrides, and prefers-color-scheme fallback"
 
@@ -460,7 +460,7 @@ Do not add future components just because they are listed here. Use these rules 
 - On desktop, hovering or focusing `Work`, `Study`, or `Life` opens the matching compact mega-menu directly beneath the navbar. Clicking the navbar link still navigates normally.
 - Keep the navigation region continuous so moving between triggers or into the panel does not flicker. Close after a short delay when both trigger region and panel are left; `Escape` and backdrop click also close it.
 - Use a fixed dimmed backdrop with `backdrop-filter: blur(12px)` between page content and the menu. Keep the navbar and menu sharp.
-- The menu uses the navbar background in both themes, a subtle bottom divider, content-based height, and no cards, rounded containers, gradients, or heavy shadows.
+- The navbar and menu use one continuous background in both themes without divider lines; the menu has content-based height and no cards, rounded containers, gradients, or heavy shadows.
 - Hide the custom mega-menu and backdrop below `721px`; keep the custom site navbar and its `Work`, `Study`, and `Life` links visible on mobile.
 - Do not use a blurred, floating, or translucent glass navbar.
 - Do not add a heavy navbar just to imitate large company sites.

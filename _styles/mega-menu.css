@@ -31,7 +31,6 @@
   height: var(--site-mega-height, 0px);
   margin: 0;
   overflow: hidden;
-  border-bottom: 1px solid var(--site-border);
   color: var(--site-ink);
   background: var(--navbar-bg);
   -webkit-clip-path: inset(0 0 100% 0);

@@ -15,18 +15,18 @@ The site serves as a public home for selected projects, writing, presentations, 
 ├── _quarto.yml          # Quarto website configuration
 ├── index.qmd            # Homepage source
 ├── legal.qmd            # Terms of Use source
-├── work/ study/ life/   # Section landing pages and local content
-├── includes/             # Shared HTML fragments and template partials
-├── scripts/              # Browser-side interactions
-├── styles/main.css       # Global site styling
-├── styles/mega-menu.css  # Desktop mega-menu styling
-├── styles/editorial.css  # Detailed editorial page styling
-├── styles/listing.css    # Reusable content-listing styling
-├── styles/toc.css        # Enhanced table-of-contents styling
+├── life/                 # Personal writing and creative content
+├── study/                # Learning and research content
+├── work/                 # Project and professional content
 ├── assets/               # Fonts, images, and other site assets
+├── _includes/            # Source-only HTML fragments and template partials
+├── _scripts/             # Browser-side interactions
+├── _styles/              # Site presentation stylesheets
 ├── _site/                # Generated website output (ignored by Git)
 └── .github/workflows/    # GitHub Actions publishing workflow
 ```
+
+Ordinary directories contain public content or public assets. Leading-underscore directories contain internal build, behavior, presentation, or generated infrastructure. The underscore excludes those directories from normal Quarto content-render discovery; it does not make their rendered resources private.
 
 ## Design
 

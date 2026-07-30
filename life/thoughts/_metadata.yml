@@ -3,4 +3,4 @@ format:
     body-classes: editorial-page
     canonical-url: true
     template-partials:
-      - ../../includes/title-block.html
+      - ../../_includes/title-block.html

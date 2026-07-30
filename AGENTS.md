@@ -38,7 +38,8 @@ Apply any global or higher-level agent instructions by default; when this file g
 - Treat the existing top-level directory structure as canonical.
 - Keep primary content within the corresponding `work/`, `study/`, or `life/` section, with page and article content in `.qmd` files.
 - Keep site-wide configuration in `_quarto.yml` and other Quarto configuration files.
-- Keep reusable HTML fragments in `includes/`, browser-side JavaScript in `scripts/`, stylesheets in `styles/`, and static resources in `assets/`; preserve exact filenames where Quarto or existing template references depend on them.
+- Keep reusable HTML fragments in `_includes/`, browser-side JavaScript in `_scripts/`, stylesheets in `_styles/`, and static resources in `assets/`; preserve exact filenames where Quarto or existing template references depend on them.
+- Use ordinary directories for public content and public assets. Use leading-underscore directories for internal build, behavior, presentation, or generated infrastructure; the underscore excludes them from normal Quarto content-render discovery and does not imply privacy.
 - Keep collection index pages and shared metadata beside the content they govern.
 - Keep repository infrastructure in `.github/` and `.devcontainer/`.
 - Keep legal and policy content in the existing legal page unless explicitly asked to restructure it.

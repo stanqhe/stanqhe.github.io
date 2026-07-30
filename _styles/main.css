@@ -137,7 +137,6 @@ body:has(.landing) {
   width: 100vw;
   margin: 0;
   padding: 0.8rem var(--navbar-inline-padding);
-  border-bottom: 1px solid var(--site-border);
   background: var(--navbar-bg);
 }
 

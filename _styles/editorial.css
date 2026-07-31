@@ -113,3 +113,202 @@ body.editorial-page:not(:has(#listing-listing))
   border-top: 1px solid var(--site-border);
   opacity: 1;
 }
+
+/* Article notes */
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  > :is(.article-endnote, #quarto-appendix.default:has(.footnotes)) {
+  margin-top: 2rem;
+  padding: 0.7rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--site-border);
+  color: var(--site-muted);
+  background: transparent;
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  > #quarto-appendix.default:has(.footnotes) {
+  z-index: auto;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  > #quarto-appendix.default
+  .quarto-appendix-heading {
+  display: none;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  > #quarto-appendix.default
+  section.footnotes {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  opacity: 1;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  > #quarto-appendix.default
+  .footnotes
+  ol {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: inherit;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  > #quarto-appendix.default
+  .footnotes
+  li,
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  > #quarto-appendix.default
+  .footnotes
+  li
+  > p {
+  line-height: inherit;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  > #quarto-appendix.default
+  .footnotes
+  li
+  > p {
+  margin-bottom: 0.45rem;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  > #quarto-appendix.default
+  .footnotes
+  li:last-child
+  > p:last-of-type {
+  margin-bottom: 0;
+}
+
+body.editorial-page:not(:has(#listing-listing)) main.content .article-endnote > * {
+  margin-bottom: 0.55rem;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  .article-endnote
+  > :last-child {
+  margin-bottom: 0;
+}
+
+body.editorial-page:not(:has(#listing-listing)) main.content .article-endnote ol,
+body.editorial-page:not(:has(#listing-listing)) main.content .article-endnote ul {
+  padding-left: 1.25rem;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content:has(.article-endnote)
+  > #quarto-appendix.default:has(.footnotes) {
+  margin-top: 0.9rem;
+  padding-top: 0;
+  border-top: 0;
+}
+
+body.editorial-page:not(:has(#listing-listing)) main.content a.footnote-ref {
+  border-radius: 0.25rem;
+  color: inherit;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  a.footnote-ref:hover {
+  color: var(--site-ink);
+  background: var(--heading-flash-bg);
+  box-shadow: 0 0 0 0.18rem var(--heading-flash-bg);
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  a.footnote-ref:focus-visible {
+  color: var(--site-ink);
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--site-border);
+}
+
+body.editorial-page:not(:has(#listing-listing)) main.content .footnotes li {
+  position: relative;
+  border-radius: 0.2rem;
+  transition:
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  :is(a.footnote-ref, .footnotes li):target {
+  animation: editorial-note-flash 1100ms ease-out;
+}
+
+body.editorial-page:not(:has(#listing-listing)) main.content a.footnote-back {
+  position: absolute;
+  top: 0;
+  left: -1.25rem;
+  z-index: 1;
+  width: 1.15rem;
+  height: 1.6rem;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0.2rem;
+  color: transparent;
+  background: transparent;
+  font-size: 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  a.footnote-back:is(:hover, :focus-visible) {
+  background: var(--heading-flash-bg);
+}
+
+body.editorial-page:not(:has(#listing-listing))
+  main.content
+  a.footnote-back:focus-visible {
+  outline: 2px solid var(--site-border);
+  outline-offset: 2px;
+}
+
+@keyframes editorial-note-flash {
+  0%,
+  72% {
+    color: var(--site-ink);
+    background: var(--heading-flash-bg);
+    box-shadow: 0 0 0 0.3rem var(--heading-flash-bg);
+  }
+
+  100% {
+    color: inherit;
+    background: transparent;
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.editorial-page:not(:has(#listing-listing)) main.content a.footnote-ref,
+  body.editorial-page:not(:has(#listing-listing)) main.content .footnotes li {
+    animation: none;
+    transition: none;
+  }
+}

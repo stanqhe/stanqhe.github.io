@@ -32,6 +32,7 @@ format:
     toc-depth: 3
     smooth-scroll: true
     anchor-sections: false
+    footnotes-hover: false
     include-in-header:
       - _includes/theme-toggle-scroll.html
     include-before-body:

@@ -247,4 +247,40 @@ const initializeEnhancedToc = () => {
   revealTocOnce();
 };
 
+const initializeFootnoteNavigation = () => {
+  if (!document.body.classList.contains("editorial-page")) {
+    return;
+  }
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest?.("a.footnote-ref, a.footnote-back");
+
+    if (
+      !link ||
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    const destination = new URL(link.href, window.location.href);
+    const isSameDocument =
+      destination.origin === window.location.origin &&
+      destination.pathname === window.location.pathname &&
+      destination.search === window.location.search;
+
+    if (!isSameDocument || !destination.hash) {
+      return;
+    }
+
+    event.preventDefault();
+    window.location.replace(destination.href);
+  });
+};
+
 initializeEnhancedToc();
+initializeFootnoteNavigation();

@@ -393,6 +393,68 @@ body:not(:has(.landing)) main.content {
   padding-top: 1.1rem;
 }
 
+/* Editorial tables */
+
+main.content table {
+  --bs-table-bg: transparent;
+  --bs-table-striped-bg: transparent;
+  --bs-table-striped-color: inherit;
+  --bs-table-hover-bg: transparent;
+  --bs-table-hover-color: inherit;
+
+  width: 100%;
+  max-width: 100%;
+  table-layout: auto;
+  border: 0;
+  border-collapse: collapse;
+  color: var(--site-ink);
+  background: transparent;
+}
+
+main.content table col {
+  width: auto !important;
+}
+
+main.content table > :not(caption) > * > * {
+  padding: 0.75rem 0.9rem;
+  vertical-align: top;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  box-shadow: none;
+  overflow-wrap: break-word;
+}
+
+main.content table > :not(caption) > * > :first-child {
+  padding-left: 0;
+}
+
+main.content table > :not(caption) > * > :last-child {
+  padding-right: 0;
+}
+
+main.content table > thead > tr > * {
+  vertical-align: bottom;
+  border-bottom: 1px solid color-mix(in srgb, var(--site-ink) 22%, transparent);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  text-wrap: balance;
+}
+
+main.content .table-heading-group {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+main.content table > tbody > tr:not(:last-child) > * {
+  border-bottom: 1px solid var(--site-border);
+}
+
+main.content .table-responsive {
+  overflow-x: visible;
+}
+
 body:not(:has(.landing)) #title-block-header {
   margin: 0 0 var(--site-paragraph-gap);
 }
@@ -657,6 +719,14 @@ body.quarto-dark .profile-image {
 
   main.content {
     padding-top: 3rem;
+  }
+
+  main.content table {
+    font-size: 0.9rem;
+  }
+
+  main.content table > :not(caption) > * > * {
+    padding: 0.65rem 0.45rem;
   }
 
   .site-navbar {

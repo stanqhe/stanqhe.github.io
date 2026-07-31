@@ -26,7 +26,7 @@ $$
 \text{existence of life} \space | \space (T, E, C)
 $$
 
-Given these constraints, life naturally follows a trajectory — “a touch of destiny.” Self-awareness embodies our willingness to make the journey meaningful, while free will empowers us to make decisions that may even more or less alter the constraints that impact our life.
+Given these constraints, life naturally follows a trajectory — “a touch of destiny.” Self-awareness embodies our willingness to make the journey meaningful, while free will empowers us to make decisions that may even more or less alter the constraints that impact our life.[^1]
 
 ## My Style
 
@@ -36,7 +36,7 @@ To do this, I formed a model called **`Strat`**, which reflects on my past journ
 
 To better organize the data processed by Strat, I created an entity named **`STRARTS`,** which responds to these constraints and echoes the fundamental dimensions of life - Lifestyle, Education, Profession, or in simple terms: **Life**, **Study**, and **Work**.
 
-| Dimension | Goal | Business Group in STRARTS |
+| Dimension | Goal | [Business Group]{.table-heading-group} [in STRARTS]{.table-heading-group} |
 | --- | --- | --- |
 | Lifestyle | Enrich the life journey | SANT |
 | Education | Learn how to accumulate and release energy properly | ECHO |
@@ -48,4 +48,4 @@ To enrich our life journey, we need a mentally fit mind and a physically healthy
 
 I hope this two-way cycle among the three dimensions form a spiral of growth, with its by-products contributing to the society as a whole and its legacy, if any, benefiting the civilization of mankind.
 
-Following such style, I live without regret “as a life”.
+[^1]: Following such style, I live without regret “as a life”.

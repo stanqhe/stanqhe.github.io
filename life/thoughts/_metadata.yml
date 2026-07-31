@@ -1,3 +1,5 @@
+date-format: "MMM D, YYYY"
+
 format:
   html:
     body-classes: editorial-page

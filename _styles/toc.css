@@ -105,10 +105,7 @@ body.has-enhanced-toc #TOC a {
     text-decoration: none;
     text-overflow: ellipsis;
     white-space: nowrap;
-    transition:
-      background-color 150ms ease,
-      color 150ms ease,
-      font-weight 150ms ease;
+    transition: color 150ms ease;
   }
 
   body.has-enhanced-toc #TOC a::before {
@@ -186,11 +183,11 @@ body.has-enhanced-toc #TOC a {
   body.has-enhanced-toc #quarto-margin-sidebar.toc-hovered #TOC a:hover,
   body.has-enhanced-toc #quarto-margin-sidebar:focus-within #TOC a:focus-visible,
   body.has-enhanced-toc #quarto-margin-sidebar.toc-expanded #TOC a:hover {
-    background: rgba(127, 127, 127, 0.16);
+    color: var(--site-ink) !important;
   }
 
   body.has-enhanced-toc #quarto-margin-sidebar:focus-within #TOC a:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--site-muted) 58%, transparent);
+    outline: 2px solid var(--site-ink);
     outline-offset: 2px;
   }
 }
@@ -300,6 +297,7 @@ body.has-enhanced-toc #TOC a {
     line-height: 1.35;
     text-decoration: none;
     white-space: nowrap;
+    transition: color 150ms ease;
   }
 
   body.has-enhanced-toc #TOC a::before {
@@ -421,14 +419,14 @@ body.has-enhanced-toc #TOC a {
     #quarto-margin-sidebar:focus-within
     #TOC
     a:focus-visible {
-    background: rgba(127, 127, 127, 0.16);
+    color: var(--site-ink) !important;
   }
 
   body.has-enhanced-toc
     #quarto-margin-sidebar:focus-within
     #TOC
     a:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--site-muted) 58%, transparent);
+    outline: 2px solid var(--site-ink);
     outline-offset: 2px;
   }
 }

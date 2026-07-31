@@ -160,6 +160,7 @@ body:has(.landing) {
   line-height: 1.1;
   border: 0;
   text-decoration: none !important;
+  transition: color 150ms ease;
 }
 
 .site-navbar-brand:hover,
@@ -191,18 +192,53 @@ body a {
   color: inherit;
 }
 
-main.content a:not(.contact-link):not(.editorial-category) {
-  color: var(--site-ink);
+body a:visited {
+  color: inherit;
+}
+
+body a:focus-visible {
+  border-radius: 0.2rem;
+  outline: 2px solid var(--site-ink);
+  outline-offset: 3px;
+}
+
+main.content
+  :is(p, li, dd, blockquote, figcaption, caption, td, th)
+  a:not(.contact-link):not(.editorial-category):not(.footnote-back) {
+  color: inherit;
   text-decoration-line: underline;
-  text-decoration-color: color-mix(in srgb, var(--site-ink) 55%, transparent);
+  text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
   transition: color 150ms ease;
 }
 
-main.content a:not(.contact-link):not(.editorial-category):hover,
-main.content a:not(.contact-link):not(.editorial-category):focus-visible {
+main.content
+  :is(p, li, dd, blockquote, figcaption, caption, td, th)
+  a:not(.contact-link):not(.editorial-category):not(.footnote-back):is(
+    :hover,
+    :focus-visible
+  ) {
   color: var(--site-muted);
+}
+
+main.content
+  :is(
+    .article-endnote,
+    .footnotes,
+    .description,
+    .metadata,
+    .figure-caption,
+    .text-muted,
+    figcaption,
+    caption,
+    small
+  )
+  a:not(.contact-link):not(.editorial-category):not(.footnote-back):is(
+    :hover,
+    :focus-visible
+  ) {
+  color: var(--site-ink);
 }
 
 main.content :not(pre) > code {
@@ -528,8 +564,10 @@ body:not(:has(.landing)) main.content section[id].heading-flash > h3 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .site-navbar-brand,
   .site-navbar-links a,
-  main.content a:not(.contact-link),
+  .nav-footer a,
+  main.content a,
   body:not(:has(.landing)) main.content section[id] > h2,
   body:not(:has(.landing)) main.content section[id] > h3 {
     transition: none !important;
@@ -579,14 +617,13 @@ footer.footer .nav-footer {
 .nav-footer a {
   color: var(--site-muted);
   text-decoration: none;
-  text-underline-offset: 0.18em;
-  text-decoration-thickness: 0.06em;
+  transition: color 150ms ease;
 }
 
 .nav-footer a:hover,
 .nav-footer a:focus-visible {
   color: var(--site-ink);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Dark mode: midnight canvas with distinct card, media, and code surfaces */
@@ -615,15 +652,6 @@ body.quarto-dark:has(.landing) {
   --site-glow-blue: rgba(168, 216, 240, 0.045);
   --site-glow-lavender: rgba(246, 241, 250, 0.03);
   --site-glow-gold: rgba(255, 252, 245, 0.022);
-}
-
-body.quarto-dark a {
-  color: inherit;
-}
-
-body.quarto-dark a:hover,
-body.quarto-dark a:focus-visible {
-  color: var(--site-muted);
 }
 
 body.quarto-dark .nav-footer a {
@@ -676,15 +704,6 @@ body.quarto-dark .profile-image {
     --site-glow-blue: rgba(168, 216, 240, 0.045);
     --site-glow-lavender: rgba(246, 241, 250, 0.03);
     --site-glow-gold: rgba(255, 252, 245, 0.022);
-  }
-
-  body:not(.quarto-light) a {
-    color: inherit;
-  }
-
-  body:not(.quarto-light) a:hover,
-  body:not(.quarto-light) a:focus-visible {
-    color: var(--site-muted);
   }
 
   body:not(.quarto-light) .nav-footer a {

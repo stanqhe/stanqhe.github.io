@@ -71,9 +71,9 @@ rounded:
 
 components:
   prose-link:
-    color: "{themes.light.text_primary}"
-    darkColor: "{themes.dark.text_primary}"
-    decoration: "One-pixel neutral underline with a 0.2em offset; keep the underline steady and shift linked text to the muted theme color on hover or focus."
+    color: "inherit"
+    decoration: "One-pixel neutral underline with a 0.2em offset; keep the underline consistently visible through default, visited, hover, and focus states. Superscript references are not underlined."
+    interaction: "In primary content, shift text from the primary to muted theme color on hover or focus. In secondary content, invert that relationship. Use only a brief color transition."
   contact-link:
     color: "{themes.light.text_muted}"
     darkColor: "{themes.dark.text_muted}"
@@ -161,8 +161,8 @@ roles:
 
   link:
     intent: "Provide editorial navigation without turning prose into UI chrome."
-    default: "Use neutral text with a subtle neutral underline."
-    interaction: "On hover or focus, shift prose-link text to the muted theme color while keeping the underline steady. Navigational and whole-card links may remain undecorated."
+    default: "Inherit the surrounding text color. Inline prose links use a subtle, consistently visible neutral underline; superscript references and navigational, card, icon, title, and other structurally obvious links may remain undecorated."
+    interaction: "In primary content, shift linked text from the primary to muted theme color on hover or focus. In footnotes, endnotes, metadata, and other secondary text, shift from muted to primary. Preserve decoration and use only a brief color transition; do not translate, scale, glow, bold, or otherwise animate links. Keyboard focus also requires a clearly visible non-color indicator such as an outline or stronger underline. Keep default, visited, hover, and focus states contrast-safe in both themes."
 
   button:
     intent: "Confirm action clearly without promotional styling."
@@ -481,7 +481,7 @@ The enhanced TOC is a signature interaction.
 - Small, quiet, metadata/legal oriented.
 - Align the copyright edge with the main content column at every viewport width.
 - Keep copyright and Terms of Use visible.
-- Footer links are muted and undecorated by default; on hover or focus, use neutral primary text and underline.
+- Footer links are muted and undecorated by default; on hover or focus, shift only to neutral primary text.
 - Avoid turning the footer into a second navbar unless the site grows substantially.
 
 ### Landing identity

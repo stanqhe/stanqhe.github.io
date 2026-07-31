@@ -51,14 +51,13 @@ body.editorial-page:not(:has(#listing-listing))
   color: var(--site-muted);
   text-decoration: none;
   text-overflow: ellipsis;
+  transition: color 150ms ease;
 }
 
 .editorial-category:hover,
 .editorial-category:focus-visible {
   color: var(--site-ink);
-  text-decoration: underline;
-  text-decoration-color: var(--site-border);
-  text-underline-offset: 0.18em;
+  text-decoration: none;
 }
 
 .editorial-share {
@@ -222,26 +221,22 @@ body.editorial-page:not(:has(#listing-listing))
 body.editorial-page:not(:has(#listing-listing)) main.content a.footnote-ref {
   border-radius: 0.25rem;
   color: inherit;
-  transition:
-    color 160ms ease,
-    background-color 160ms ease,
-    box-shadow 160ms ease;
+  text-decoration: none;
+  transition: color 150ms ease;
 }
 
 body.editorial-page:not(:has(#listing-listing))
   main.content
   a.footnote-ref:hover {
-  color: var(--site-ink);
-  background: var(--heading-flash-bg);
-  box-shadow: 0 0 0 0.18rem var(--heading-flash-bg);
+  color: var(--site-muted);
 }
 
 body.editorial-page:not(:has(#listing-listing))
   main.content
   a.footnote-ref:focus-visible {
-  color: var(--site-ink);
-  outline: 0;
-  box-shadow: 0 0 0 2px var(--site-border);
+  color: var(--site-muted);
+  outline: 2px solid var(--site-ink);
+  outline-offset: 3px;
 }
 
 body.editorial-page:not(:has(#listing-listing)) main.content .footnotes li {
@@ -254,7 +249,7 @@ body.editorial-page:not(:has(#listing-listing)) main.content .footnotes li {
 
 body.editorial-page:not(:has(#listing-listing))
   main.content
-  :is(a.footnote-ref, .footnotes li):target {
+  .footnotes li:target {
   animation: editorial-note-flash 1100ms ease-out;
 }
 
@@ -279,14 +274,8 @@ body.editorial-page:not(:has(#listing-listing)) main.content a.footnote-back {
 
 body.editorial-page:not(:has(#listing-listing))
   main.content
-  a.footnote-back:is(:hover, :focus-visible) {
-  background: var(--heading-flash-bg);
-}
-
-body.editorial-page:not(:has(#listing-listing))
-  main.content
   a.footnote-back:focus-visible {
-  outline: 2px solid var(--site-border);
+  outline: 2px solid var(--site-ink);
   outline-offset: 2px;
 }
 
@@ -306,7 +295,7 @@ body.editorial-page:not(:has(#listing-listing))
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.editorial-page:not(:has(#listing-listing)) main.content a.footnote-ref,
+  .editorial-category,
   body.editorial-page:not(:has(#listing-listing)) main.content .footnotes li {
     animation: none;
     transition: none;

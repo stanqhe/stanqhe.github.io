@@ -50,7 +50,6 @@ main.content:has(> #listing-listing) .quarto-post .thumbnail-image {
   border-radius: 0.75rem;
   background: var(--site-media-bg);
   object-fit: cover;
-  transition: opacity 160ms ease;
 }
 
 main.content:has(> #listing-listing)
@@ -117,8 +116,9 @@ body:not(:has(.landing))
 
 main.content:has(> #listing-listing) .quarto-post .listing-title a,
 main.content:has(> #listing-listing) .quarto-post .metadata a {
-  color: var(--site-ink);
+  color: inherit;
   text-decoration: none;
+  transition: color 150ms ease;
 }
 
 main.content:has(> #listing-listing) .quarto-post .metadata {
@@ -126,6 +126,7 @@ main.content:has(> #listing-listing) .quarto-post .metadata {
   grid-row: 2;
   align-self: start;
   margin: 0;
+  color: var(--site-muted);
 }
 
 main.content:has(> #listing-listing) .quarto-post .listing-date {
@@ -145,15 +146,9 @@ main.content:has(> #listing-listing)
   color: var(--site-muted);
 }
 
-main.content:has(> #listing-listing)
-  .quarto-post:has(a:hover)
-  .thumbnail-image {
-  opacity: 0.88;
-}
-
 main.content:has(> #listing-listing) .quarto-post a:focus-visible {
   border-radius: 0.35rem;
-  outline: 2px solid color-mix(in srgb, var(--site-muted) 58%, transparent);
+  outline: 2px solid var(--site-ink);
   outline-offset: 4px;
 }
 

@@ -10,12 +10,12 @@
 
   <rect width="512" height="512" rx="104" fill="#fafafc" />
 
-  <!-- Canonical STRARTS mark scaled uniformly to 61.998% of canvas height. -->
-  <g transform="translate(75.4176 75.4176) scale(0.7054)">
+  <!-- Canonical STRARTS mark scaled uniformly to 70% of canvas height. -->
+  <g transform="translate(52.1102 52.1102) scale(0.7964444)">
     <g
       fill="none"
-      stroke="#ec3f3f"
-      stroke-width="10"
+      stroke="#1d1d1f"
+      stroke-width="20"
       stroke-linecap="round"
       stroke-linejoin="round"
     >
@@ -24,7 +24,7 @@
         d="
           M 100.437 100.437
           A 220 220 0 0 1 411.563 100.437
-          L 362.420 149.580
+          L 369.491 142.509
         "
       />
 
@@ -33,22 +33,22 @@
         d="
           M 411.563 411.563
           A 220 220 0 0 1 100.437 411.563
-          L 149.580 362.420
+          L 142.509 369.491
         "
       />
 
       <!-- Inner dashes -->
       <path
         d="
-          M 187.764 324.236
-          L 236.908 275.092
+          M 194.835 317.165
+          L 229.837 282.163
         "
       />
 
       <path
         d="
-          M 324.236 187.764
-          L 275.092 236.908
+          M 317.165 194.835
+          L 282.163 229.837
         "
       />
 
@@ -62,10 +62,10 @@
     </g>
 
     <!-- Visible dots and exact hidden center dot -->
-    <g fill="#ec3f3f">
-      <circle cx="168.672" cy="343.328" r="5" />
-      <circle cx="256" cy="256" r="5" />
-      <circle cx="343.328" cy="168.672" r="5" />
+    <g fill="#1d1d1f">
+      <circle cx="168.672" cy="343.328" r="10" />
+      <circle cx="256" cy="256" r="10" />
+      <circle cx="343.328" cy="168.672" r="10" />
     </g>
   </g>
 </svg>

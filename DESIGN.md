@@ -508,6 +508,14 @@ The enhanced TOC is a signature interaction.
 - Use dates and tags quietly.
 - Use accent colors only for selected states or tiny markers.
 
+### STRARTS mark and favicon
+
+- `assets/images/strarts_mark.svg` is the canonical STRARTS vector source. Preserve its red `#ec3f3f` color, dot locations, dash logic, central alignment, and transparent canvas when updating the primary mark.
+- `assets/images/strarts_favicon.svg` is a favicon-specific treatment, not a replacement canonical mark: it may use a light `#fafafc` rounded-square background and a higher-contrast near-black `#1d1d1f` mark, but it must reuse the canonical vector geometry directly rather than redraw or simplify it.
+- The three dot centers are fixed anchors. When favicon line weight changes, scale the dot size proportionally and shorten dash lengths as needed; do not move the dots to compensate for thicker round caps.
+- Keep all six intervals along the coded diagonal visually equal: the gaps between each outer dash and dot, each dot and inner dash, and each inner dash and the center dot. Treat this as an optical-spacing rule when rasterized at favicon sizes.
+- Keep the favicon self-contained and test it at 16, 32, 48, and 64 px. At 16 px, the mark only needs to retain a recognizable silhouette; the dot-dash rhythm should remain discernible at larger favicon sizes.
+
 ### Future forms and controls
 
 - Use neutral primary actions: ink on light surfaces, snow on dark surfaces, or the inverse when needed.

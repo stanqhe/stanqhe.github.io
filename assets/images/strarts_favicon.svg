@@ -1,0 +1,71 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+  role="img"
+  aria-labelledby="strarts-favicon-title"
+>
+  <title id="strarts-favicon-title">STRARTS favicon</title>
+
+  <rect width="512" height="512" rx="104" fill="#fafafc" />
+
+  <!-- Canonical STRARTS mark scaled uniformly to 61.998% of canvas height. -->
+  <g transform="translate(75.4176 75.4176) scale(0.7054)">
+    <g
+      fill="none"
+      stroke="#ec3f3f"
+      stroke-width="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <!-- Upper arc with connected outer dash -->
+      <path
+        d="
+          M 100.437 100.437
+          A 220 220 0 0 1 411.563 100.437
+          L 362.420 149.580
+        "
+      />
+
+      <!-- Lower arc with connected outer dash -->
+      <path
+        d="
+          M 411.563 411.563
+          A 220 220 0 0 1 100.437 411.563
+          L 149.580 362.420
+        "
+      />
+
+      <!-- Inner dashes -->
+      <path
+        d="
+          M 187.764 324.236
+          L 236.908 275.092
+        "
+      />
+
+      <path
+        d="
+          M 324.236 187.764
+          L 275.092 236.908
+        "
+      />
+
+      <!-- Solid diagonal -->
+      <path
+        d="
+          M 100.437 100.437
+          L 411.563 411.563
+        "
+      />
+    </g>
+
+    <!-- Visible dots and exact hidden center dot -->
+    <g fill="#ec3f3f">
+      <circle cx="168.672" cy="343.328" r="5" />
+      <circle cx="256" cy="256" r="5" />
+      <circle cx="343.328" cy="168.672" r="5" />
+    </g>
+  </g>
+</svg>

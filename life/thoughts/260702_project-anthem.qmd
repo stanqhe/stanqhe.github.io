@@ -5,6 +5,7 @@ author: "Stan H."
 date: 2026-07-02
 categories: Update
 featured: true
+featured-order: 2
 ---
 
 Project ANTHEM is my first major initiative after defining the Adaptive Strength Cycle.

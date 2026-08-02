@@ -1,5 +1,49 @@
 ---
 title: "Life"
+description: "Moments and thoughts from life beyond work and study."
+toc: false
+format:
+  html:
+    body-classes: life-landing-page
+listing:
+  - id: life-featured-listing
+    contents:
+      - thoughts/*.qmd
+      - portraits/*.qmd
+      - moments/*.qmd
+      - events/*.qmd
+    include:
+      featured: true
+    template: featured-cards.ejs.md
+    sort: "featured-order asc"
+    date-format: "MMM D, YYYY"
+    sort-ui: false
+    filter-ui: false
+  - id: life-more-listing
+    contents:
+      - thoughts/*.qmd
+      - portraits/*.qmd
+      - moments/*.qmd
+      - events/*.qmd
+    include:
+      featured: false
+    template: more-cards.ejs.md
+    sort: "date desc"
+    date-format: "MMM D, YYYY"
+    sort-ui: false
+    filter-ui: false
 ---
 
-Moments and thoughts from life beyond work and study.
+::: {.life-landing}
+
+::: {#life-featured-listing}
+:::
+
+::: {.life-section .life-more-section}
+## More from Life
+
+::: {#life-more-listing}
+:::
+:::
+
+:::

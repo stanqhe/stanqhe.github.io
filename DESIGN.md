@@ -98,7 +98,15 @@ components:
     darkBackgroundColor: "{themes.dark.surface_card}"
     rounded: "{rounded.lg}"
     border: "none"
-    surface: "Low-emphasis panel for landing-page identity support text."
+    shadow: "Soft theme shadow"
+    surface: "Low-emphasis borderless panel for landing-page identity support text."
+  landing-card:
+    backgroundColor: "{themes.light.surface_card}"
+    darkBackgroundColor: "{themes.dark.surface_card}"
+    rounded: "{rounded.md}"
+    border: "none"
+    shadow: "Soft theme shadow"
+    surface: "Borderless editorial card for selected landing-page content."
   profile-image:
     backgroundColor: "{themes.light.surface_media}"
     darkBackgroundColor: "{themes.dark.surface_media}"
@@ -181,7 +189,7 @@ roles:
 
   border:
     intent: "Separate content softly and signal interaction."
-    default: "Use low-contrast neutral borders."
+    default: "Use low-contrast neutral borders for dividers and components that need structural separation; do not add an outline to every card."
     interaction: "Hover borders may lean lavender/purple."
 
   toc:
@@ -395,8 +403,9 @@ Depth is atmospheric, not dramatic.
 
 Preferred surface recipes:
 
-- **Light:** opaque snow card or frost media surface, low-contrast border, and cool shadow.
-- **Dark:** opaque charcoal card or media surface, low-contrast snow border, minimal glow, and normal shadow.
+- **Landing cards:** use an opaque snow/charcoal surface with no default outline, rounded corners, and a soft theme shadow. Keep a visible `:focus-visible` outline for keyboard users.
+- **Light editorial surfaces:** use snow cards or frost media surfaces with cool, restrained shadows. Use low-contrast borders only when they clarify grouping or separation.
+- **Dark editorial surfaces:** use charcoal cards or media surfaces with surface contrast and normal shadows. Use low-contrast borders only for grouping, separation, or other structural needs.
 - Reserve glass for an intentional translucent overlay rather than the default panel treatment.
 
 ## Motion
@@ -408,6 +417,7 @@ Motion should clarify, not entertain.
 - Switching between open mega-menu sections crossfades content in place without horizontal movement.
 - TOC reveal/collapse can be animated.
 - Heading flash can fade.
+- Landing-card media is the one approved content-image hover exception: on pointer hover, scale the contained image to `1.03` over `400ms` with a restrained easing curve while keeping the card and text stationary. Do not use a text-color hover treatment for these cards, and disable the scale and transition under `prefers-reduced-motion`.
 - Buttons should not float or glow by default; prefer border, text, or subtle surface changes.
 - Contact links change color without translation, scaling, or pop motion.
 - Always respect `prefers-reduced-motion`.
@@ -448,6 +458,10 @@ Future or conditional components:
 - Inputs, forms, or app-like controls
 
 Do not add future components just because they are listed here. Use these rules only when the corresponding content or interaction exists.
+
+### Editorial lists
+
+- Place quiet dividers between list rows within the content container. In multi-column lists, the divider spans the full row rather than appearing beneath each individual card; at single-column breakpoints, dividers separate each item.
 
 ### Navbar
 
@@ -507,6 +521,11 @@ The enhanced TOC is a signature interaction.
 - Keep the STRARTS placeholder mark fixed at `2rem` in compact thumbnails and `4rem` in desktop thumbnails.
 - Use dates and tags quietly.
 - Use accent colors only for selected states or tiny markers.
+
+### Life landing
+
+- Use three Life-only responsive content widths inspired by the editorial listing system: `980px` above `1068px`, `692px` from `1068px` through `735px`, and `87.5%` capped at `366px` below `734px`.
+- Keep Life landing cards compact and show collection/category, title, and date; omit descriptions from the card treatments.
 
 ### STRARTS mark and favicon
 

@@ -3,7 +3,15 @@ pagetitle: "Stan Q. He"
 description: "Stan Q. He is an MSBA candidate at UC San Diego exploring business analytics, product strategy, and AI-enabled transformation through projects and writing."
 title-block-banner: false
 toc: false
+format:
+  html:
+    canonical-url: true
+    include-in-header:
+      - _includes/theme-toggle-scroll.html
+      - _includes/identity-schema.html
 ---
+
+<h1 class="visually-hidden">Stan Q. He</h1>
 
 ::: {.landing}
 <!-- Keep the profile stack independent from the introduction grid. -->

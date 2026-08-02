@@ -60,7 +60,7 @@ spacing:
   xl: "2.25rem"
   paragraph_gap: "1.1rem"
   page_gutter: "clamp(1.25rem, 4vw, 1.375rem)"
-  content_max: "936px"
+  content_max: "980px"
 
 rounded:
   sm: "0.35rem"
@@ -364,7 +364,7 @@ Typography should feel editorial, not promotional.
 
 The site has two major modes: a personal landing page and Quarto-native content pages.
 
-- Max content width: `936px`.
+- Max content width: `980px`.
 - Page gutter: `clamp(1.25rem, 4vw, 1.375rem)`.
 - Use the Terms of Use/content-page margin model as the standard across pages.
 - At intermediate widths, preserve the same TOC-aware inset across homepage and content pages so navbar text and page content align.

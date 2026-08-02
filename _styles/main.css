@@ -42,7 +42,7 @@
   --bs-body-font-family: "Inter", sans-serif;
   --bs-font-sans-serif: "Inter", sans-serif;
 
-  --site-content-max: 936px;
+  --site-content-max: 980px;
   --site-page-gutter: clamp(1.25rem, 4vw, 1.375rem);
   --site-copy-size: clamp(1rem, 0.98rem + 0.1vw, 1.06rem);
   --site-copy-leading: 1.65;

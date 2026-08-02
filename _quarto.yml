@@ -6,11 +6,18 @@ project:
     - "life/**/*.qmd"
     - "study/**/*.qmd"
     - "work/**/*.qmd"
+  resources:
+    - "robots.txt"
 
 website:
   title: "Stan Q. He"
+  description: "Stan Q. He is a business analytics professional exploring product strategy, AI-enabled transformation, and better digital life through projects and writing."
   favicon: assets/images/strarts_favicon.svg
   site-url: "https://stanqhe.github.io"
+  open-graph: true
+  twitter-card:
+    creator: "@stanqhe"
+    site: "@stanqhe"
   google-analytics: "G-WX3RQDGV80"
   page-footer:
     left: "© 2026 Stan Q. He. All rights reserved."

@@ -4,7 +4,7 @@ description: "The final installment in the “2018 Gaokao Messages” trilogy, t
 author: "Stan H."
 date: 2018-06-06
 categories: Reflection
-featured: false
+featured: true
 ---
 
 > 按：高考前数日，学科教研组长们依次上台做考前提醒讲座，并邀请部分往届优秀毕业生分享寄语，其中不乏气势恢宏者，使在场者为之振奋。本文摘自 2018 年 6 月 6 日夜笔者随感，内容有删节。

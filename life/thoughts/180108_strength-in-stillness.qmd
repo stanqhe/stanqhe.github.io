@@ -4,7 +4,7 @@ description: "The second installment in the “2018 Gaokao Messages” trilogy, 
 author: "Stan H."
 date: 2018-01-08
 categories: Reflection
-featured: false
+featured: true
 ---
 学期快收官了，300 天的倒计时也进入了 150 天大关。旷日持久的第一轮复习经历了一模考试的验收，总算是要落下帷幕了。
 

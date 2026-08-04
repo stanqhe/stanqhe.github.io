@@ -222,7 +222,7 @@ main.content:has(> #listing-listing) .quarto-post a:focus-visible {
 /* Life landing page */
 
 body.life-landing-page #title-block-header {
-  margin-bottom: clamp(2.25rem, 6vw, 4rem) !important;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem) !important;
 }
 
 body.life-landing-page #title-block-header .description {
@@ -242,7 +242,7 @@ body.life-landing-page #title-block-header .description {
 
 .life-lead-card {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(15rem, 0.9fr);
+  grid-template-columns: minmax(0, 0.75fr) minmax(15rem, 1.25fr);
   align-items: stretch;
   overflow: hidden;
   border: none;
@@ -378,7 +378,6 @@ body.life-landing-page #listing-life-more-listing .life-more-list {
   text-decoration: none !important;
 }
 
-.life-featured-row > .life-lead-card,
 .life-featured-row > .life-feature-card,
 .life-more-row > .life-more-item {
   height: 100%;

@@ -4,7 +4,7 @@ description: "A keynote-like New Year piece, this article looks ahead to life as
 author: "Stan H."
 date: 2018-02-16
 categories: Keynote
-featured: false
+featured: true
 ---
 当你看到晨间第一缕阳光，从水天相接的远方奔驰而来的时候，2018 年中国农历新春就已经到来了。新时代的朝阳已跃出地平线，正冉冉升起。
 
